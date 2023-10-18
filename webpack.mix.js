@@ -11,7 +11,23 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+ mix.js('resources/js/app.js', 'public/js')
+ .react()
+ .sourceMaps()
+ .postCss('resources/css/app.css', 'public/css', [
+     //
+ ]);
+
+
+ if (mix.inProduction()) {
+    mix.version();
+}
+
+
+mix.webpackConfig({
+    devServer: {
+        hot: true, // Aktifkan HMR
+        host: 'localhost', // Ganti sesuai kebutuhan
+        port: 8000, // Port yang digunakan oleh server pengembangan
+    }
+});
