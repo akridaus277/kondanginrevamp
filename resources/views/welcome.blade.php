@@ -25,6 +25,6 @@
         <div id="example"></div>
 
 
-        <script src="{{ mix('js/app.js'). '?v=' . time()  }}"></script>
+        <script src="{{ asset('js/app.js'). '?v=' . time()  }}"></script>
     </body>
 </html>

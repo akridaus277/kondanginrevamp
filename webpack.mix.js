@@ -16,18 +16,21 @@ const mix = require('laravel-mix');
  .sourceMaps()
  .postCss('resources/css/app.css', 'public/css', [
      //
- ]);
+ ]).browserSync('http://localhost:8000');
 
 
- if (mix.inProduction()) {
-    mix.version();
-}
 
 
-mix.webpackConfig({
-    devServer: {
-        hot: true, // Aktifkan HMR
-        host: 'localhost', // Ganti sesuai kebutuhan
-        port: 8000, // Port yang digunakan oleh server pengembangan
-    }
-});
+
+//  if (mix.inProduction()) {
+//     mix.version();
+// }
+
+
+// mix.webpackConfig({
+//     devServer: {
+//         hot: true, // Aktifkan HMR
+//         host: 'localhost', // Ganti sesuai kebutuhan
+//         port: 8000, // Port yang digunakan oleh server pengembangan
+//     }
+// });
