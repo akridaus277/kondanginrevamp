@@ -16,7 +16,7 @@ const mix = require('laravel-mix');
  .sourceMaps()
  .postCss('resources/css/app.css', 'public/css', [
      //
- ]).browserSync('http://localhost:8000');
+ ]);
 
 
 
