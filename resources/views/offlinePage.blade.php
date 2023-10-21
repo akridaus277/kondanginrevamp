@@ -22,11 +22,8 @@
         @laravelPWA
     </head>
     <body class="antialiased">
-        <div id="example">
-            @yield('content')
-        </div>
+        @yield('content')
 
-
-        <script src="{{ mix('js/app.js'). '?v=' . time()  }}"></script>
+        <script src="{{ mix('js/app.js')  }}"></script>
     </body>
 </html>
