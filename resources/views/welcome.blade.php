@@ -19,7 +19,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
-
+        @laravelPWA
     </head>
     <body class="antialiased">
         <div id="example"></div>
