@@ -24,6 +24,6 @@
     <body class="antialiased">
         @yield('content')
 
-        <script src="{{ mix('js/app.js')  }}"></script>
+        <script src="{{ mix('js/app.js'). '?v=' . time() }}"></script>
     </body>
 </html>
