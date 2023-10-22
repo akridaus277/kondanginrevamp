@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Example from "./components/Example";
 import Coba from "./components/Coba";
 import KoneksiTerputus from "./components/KoneksiTerputus";
+import Login from "./components/Pages/Login/Login";
 
 
 const RootIndex = () => {
@@ -14,6 +15,7 @@ const RootIndex = () => {
             <Routes>
                 <Route path="/" element={<Example></Example>}></Route>
                 <Route path="/coba" element={<Coba></Coba>}></Route>
+                <Route path="/login" element={<Login></Login>}></Route>
                 <Route
                     path="/koneksiTerputus"
                     element={<KoneksiTerputus></KoneksiTerputus>}
@@ -37,5 +39,10 @@ if (document.getElementById("coba")) {
 
 if (document.getElementById("keneksiTerputus")) {
     const root = createRoot(document.getElementById("keneksiTerputus"));
+    root.render(<RootIndex></RootIndex>);
+}
+
+if (document.getElementById("login")) {
+    const root = createRoot(document.getElementById("login"));
     root.render(<RootIndex></RootIndex>);
 }

@@ -21,6 +21,10 @@ Route::get('/coba', function () {
     return view('coba');
 });
 
+Route::get('/login', function () {
+    return view('Pages.login');
+});
+
 Route::get('/koneksiTerputus', function () {
     return view('koneksiPutus');
 });

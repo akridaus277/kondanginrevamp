@@ -1,0 +1,90 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #f0f2f5; */
+}
+
+.login-card {
+    width: 300px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card-title {
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    margin-left: 25%;
+    /* margin-right: 50%; */
+    align-items: center;
+    justify-content: center;
+    height: 128px;
+    width: 128px;
+    margin-bottom: 20px;
+    padding: 5px; /* Ruang di sekitar logo */
+    /* background-color: #f0f2f5; */
+    border-radius: 100%;
+    /* border: 2px solid #000;  */
+    /* Ketebalan border solid */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Bayangan */
+
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+
+.flower-corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+
+  .flower-corner img {
+    width: 180px; /* Sesuaikan ukuran bunga */
+    height: auto; /* Sesuaikan ukuran bunga */
+  }
+
+/* Ukuran layar di atas laptop (misalnya, lebar minimal 1024px) */
+@media (min-width: 1024px) {
+    .login-card {
+        width: 400px; /* Atur lebar kartu sesuai kebutuhan */
+        justify-content: center;
+        align-items: center;
+    }
+    .logo-container {
+        margin-left: 30%;
+    }
+}
+
+/* Ukuran layar kurang dari atau sama dengan 768px (perangkat mobile) */
+@media (max-width: 768px) {
+
+
+    .login-container {
+        /* padding: 20px; Padding atas dan bawah */
+        height: 90vh;
+
+      }
+
+      .login-card {
+        width: 80%; /* Atur lebar kartu agar menyesuaikan layar mobile */
+      }
+
+      .logo-container {
+        height: 80px; /* Sesuaikan tinggi logo */
+        width: 80px; /* Sesuaikan lebar logo */
+      }
+}
