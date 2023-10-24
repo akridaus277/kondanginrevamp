@@ -10,14 +10,13 @@
     @laravelPWA
 </head>
 <style>
-            body {
+        body {
             /* display: flex; */
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
+            /* height: 100vh; */
+            /* margin: 0; */
             /* Menambahkan gambar latar belakang yang menyesuaikan layar */
             background: url('../images/icons/tirai.jpg') center/cover no-repeat;
             backdrop-filter: blur(3px);

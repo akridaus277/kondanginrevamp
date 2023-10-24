@@ -10,21 +10,21 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <Card className="login-card">
-            <div className="flower-corner">
-                    <img src="../images/icons/tirai.jpg" height={"128px"} width={"128px"} alt="Bunga" />
-                </div>
+            <Card className="login-card" hoverable>
                 <h2 className="login-card-title">Login</h2>
                 <div
                     className="logo-container"
-                    style={{ height: "128px", width: "128px" }}
+                    // style={{ height: "128px", width: "128px" }}
                 >
-                    <img
-                        src="../images/icons/kondangin.png"
-                        height={"128px"}
-                        width={"128px"}
-                        alt="Logo"
-                    />
+                    <div className="login-logo">
+                        <img
+                            src="../images/icons/kondangin.png"
+                            height={"128px"}
+                            width={"128px"}
+                            alt="Logo"
+                        />
+                    </div>
+
                 </div>
 
                 <Form
@@ -67,11 +67,12 @@ const Login = () => {
                             name="remember"
                             valuePropName="checked"
                             noStyle
+                            className="rememberMe-container"
                         >
-                            <Checkbox>Remember me</Checkbox>
+                            <Checkbox className="rememberMe">Remember me</Checkbox>
                         </Form.Item>
-                        <a className="login-form-forgot" href="#">
-                            Forget password
+                        <a className="login-form-forgot" href="#" style={{ color: "#516557"}}>
+                            Forgot password?
                         </a>
                     </Form.Item>
 
@@ -80,6 +81,7 @@ const Login = () => {
                             type="primary"
                             htmlType="submit"
                             className="login-form-button"
+                            style={{ background: "#516557"}}
                         >
                             Log in
                         </Button>

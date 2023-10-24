@@ -10,8 +10,6 @@
     width: 300px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    justify-content: center;
-    align-items: center;
 }
 
 .login-card-title {
@@ -20,20 +18,18 @@
 
 .logo-container {
     display: flex;
-    margin-left: 25%;
-    /* margin-right: 50%; */
     align-items: center;
     justify-content: center;
+    padding: 5px;
+
+}
+
+.login-logo{
     height: 128px;
     width: 128px;
+    border-radius: 50%; /* Mengatur elemen menjadi lingkaran */
+    box-shadow: 0 0 15px #516557; /* Bayangan */
     margin-bottom: 20px;
-    padding: 5px; /* Ruang di sekitar logo */
-    /* background-color: #f0f2f5; */
-    border-radius: 100%;
-    /* border: 2px solid #000;  */
-    /* Ketebalan border solid */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Bayangan */
-
 }
 
 .login-form-forgot {
@@ -45,46 +41,72 @@
 }
 
 
-.flower-corner {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-  }
-
-  .flower-corner img {
-    width: 180px; /* Sesuaikan ukuran bunga */
-    height: auto; /* Sesuaikan ukuran bunga */
-  }
-
-/* Ukuran layar di atas laptop (misalnya, lebar minimal 1024px) */
 @media (min-width: 1024px) {
+
     .login-card {
-        width: 400px; /* Atur lebar kartu sesuai kebutuhan */
+        width: 400px;
         justify-content: center;
         align-items: center;
     }
-    .logo-container {
-        margin-left: 30%;
-    }
+
 }
+
 
 /* Ukuran layar kurang dari atau sama dengan 768px (perangkat mobile) */
 @media (max-width: 768px) {
 
 
-    .login-container {
-        /* padding: 20px; Padding atas dan bawah */
-        height: 90vh;
-
-      }
 
       .login-card {
         width: 80%; /* Atur lebar kartu agar menyesuaikan layar mobile */
       }
 
-      .logo-container {
-        height: 80px; /* Sesuaikan tinggi logo */
-        width: 80px; /* Sesuaikan lebar logo */
-      }
+
 }
+
+@media (max-height: 480px) {
+
+    .login-container {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        /* background-color: #f0f2f5; */
+    }
+
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #516557 !important;
+    border-color: #516557 !important;
+  }
+.ant-checkbox .ant-checkbox-inner {
+    border-color: #516557 !important;
+  }
+
+
+/* Ukuran layar kurang dari atau sama dengan 360px (perangkat mobile) */
+@media (max-width: 370px) {
+
+    .rememberMe-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center; /* Pusatkan vertikal */
+    }
+    .rememberMe {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Pusatkan teks horizontal */
+    }
+    .login-form-forgot {
+        float: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;/* Pusatkan teks horizontal */
+    }
+    .ant-checkbox-wrapper:after {
+        display: none
+    }
+
+}
+
