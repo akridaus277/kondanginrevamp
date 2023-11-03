@@ -1,0 +1,112 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #f0f2f5; */
+}
+
+.login-card {
+    width: 300px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.login-card-title {
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.login-logo{
+    height: 128px;
+    width: 128px;
+    border-radius: 50%; /* Mengatur elemen menjadi lingkaran */
+    box-shadow: 0 0 15px #516557; /* Bayangan */
+    margin-bottom: 20px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+
+@media (min-width: 1024px) {
+
+    .login-card {
+        width: 400px;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+
+/* Ukuran layar kurang dari atau sama dengan 768px (perangkat mobile) */
+@media (max-width: 768px) {
+
+
+
+      .login-card {
+        width: 80%; /* Atur lebar kartu agar menyesuaikan layar mobile */
+      }
+
+
+}
+
+@media (max-height: 480px) {
+
+    .login-container {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        /* background-color: #f0f2f5; */
+    }
+
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #516557 !important;
+    border-color: #516557 !important;
+  }
+.ant-checkbox .ant-checkbox-inner {
+    border-color: #516557 !important;
+  }
+
+
+/* Ukuran layar kurang dari atau sama dengan 360px (perangkat mobile) */
+@media (max-width: 370px) {
+
+    .rememberMe-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center; /* Pusatkan vertikal */
+    }
+    .rememberMe {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Pusatkan teks horizontal */
+    }
+    .login-form-forgot {
+        float: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;/* Pusatkan teks horizontal */
+    }
+    .ant-checkbox-wrapper:after {
+        display: none
+    }
+
+}
+

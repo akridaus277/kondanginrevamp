@@ -1,17 +1,14 @@
 import React from 'react';
-import  ReactDOM  from 'react-dom';
+
 
 function Example() {
     return (
         <div className="example">
-            This is a React component! Hiya hiya tanpa clear cache yuhu
+            This is a React component! Hiya hiya tanpa clear cache yuhu tot ini tanpa clear cache lagi
         </div>
     );
 }
 
 export default Example;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example></Example>, document.getElementById("example"))
-}
 

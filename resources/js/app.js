@@ -1,4 +1,4 @@
 require('./bootstrap');
 
 // React Components
-import './components/Example'
+import './RootIndex'

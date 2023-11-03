@@ -14,11 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('example');
+});
+
+Route::get('/coba', function () {
+    return view('coba');
+});
+
+Route::get('/login', function () {
+    return view('Pages.login');
+});
+
+Route::get('/register', function () {
+    return view('Pages.register');
+});
+
+Route::get('/koneksiTerputus', function () {
+    return view('koneksiPutus');
 });
 
 Route::get('/offline', function () {
 
-    return view('vendor.laravelpwa.offline');
+    return view('offlinePage');
 
 });
