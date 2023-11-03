@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Example</title>
+    <title>Register</title>
     @laravelPWA
 </head>
 <style>
-    body {
+        body {
             /* display: flex; */
             flex-direction: column;
             justify-content: center;
@@ -22,11 +22,12 @@
 
         }
 </style>
+
 <body>
 
-    <div id="example"></div>
+<div id="register"></div>
 
     <script src="{{ mix('js/app.js'). '?v=' . time() }}"></script>
-
+    
 </body>
 </html>

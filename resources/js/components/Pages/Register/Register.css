@@ -1,0 +1,133 @@
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  /* background-color: #f0f2f5; */
+}
+
+.registration-card {
+  width: 500px;
+  /* Melebarkan card */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  /* margin-top: 50px;
+  margin-bottom: 50px; */
+
+}
+
+/* Hilangkan margin kanan pada field terakhir */
+.registration-card .ant-col:last-child {
+  margin-right: 0;
+}
+
+.registration-card-title {
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.registration-logo {
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #516557;
+  margin-bottom: 20px;
+}
+
+
+/* Ganti warna border saat field di-focus menjadi merah */
+
+
+
+/* Mengatur tata letak field menjadi zig-zag */
+.form-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.registration-form-forgot {
+  float: right;
+}
+
+.registration-form-button {
+  width: 100%;
+}
+
+
+@media (min-width: 1024px) {
+  .registration-card {
+    width: 600px;
+    /* Melebarkan card untuk layar yang lebih besar */
+   
+  }
+  
+  
+}
+/* Ukuran layar kurang dari atau sama dengan 768px (perangkat mobile) */
+@media (max-width: 768px) {
+
+
+
+  .registration-card {
+    width: 80%; /* Atur lebar kartu agar menyesuaikan layar mobile */
+  }
+
+
+}
+
+@media (max-height: 480px) {
+
+  .registration-container {
+      padding-top:250px;
+      padding-bottom: 250px;
+      /* background-color: #f0f2f5; */
+  }
+
+  .registration-card {
+    width: 90%; /* Atur lebar kartu agar menyesuaikan layar mobile */
+  }
+
+}
+@media (max-width: 480px) {
+
+  .registration-container {
+      padding-top:100px;
+      padding-bottom: 100px;
+      /* background-color: #f0f2f5; */
+  }
+
+  .registration-card {
+    width: 90%; /* Atur lebar kartu agar menyesuaikan layar mobile */
+  }
+
+}
+
+
+#my-message {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+
+.ant-message{
+  position: sticky !important;
+  transform: translateX(0%) !important;
+}
+
+
+.ant-message-notice-content{
+  margin-top: 8px !important;
+}
