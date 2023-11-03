@@ -2,9 +2,8 @@ import React from "react";
 
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import Example from "./components/Example";
-import Coba from "./components/Coba";
-import KoneksiTerputus from "./components/KoneksiTerputus";
+import Coba from "./components/Coba.jsx";
+import KoneksiTerputus from "./components/KoneksiTerputus.jsx";
 import Login from "./components/Pages/Login/Login.jsx";
 import Register from "./components/Pages/Register/Register.jsx";
 
