@@ -11,7 +11,7 @@ import {
     GoogleLoginButton,
   } from 'react-social-login-buttons';
 
-  const REDIRECT_URI = 'http://localhost/'
+//   const REDIRECT_URI = 'http://localhost/'
   const REACT_APP_GG_APP_ID = "47362224264-pnsonsp71dats36hluj44s3ss76k3ruo.apps.googleusercontent.com"
 
 const Login = () => {
