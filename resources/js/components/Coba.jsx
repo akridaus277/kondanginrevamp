@@ -3,7 +3,7 @@ import React from 'react'
 const Coba = () => {
   return (
     <div className='example'>
-      dhimas putranto
+      dhimas putranto hkkg
     </div>
   )
 }
