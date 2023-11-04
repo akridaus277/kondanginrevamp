@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +24,13 @@ Route::get('/register', function () {
     return view('Pages.register');
 });
 
-Route::get('/forgetPassword', function () {
+Route::get('/password/forget', function () {
     return view('Pages.forgetPassword');
 });
 
-Route::get('/resetPassword', function () {
+Route::get('/password/reset/{token}', function () {
     return view('Pages.resetPassword');
-});
+})->name('password.reset');
 
 
 
@@ -53,10 +54,8 @@ Route::get('/offline', function () {
     return view('offlinePage');
 
 });
-Route::get('/password/reset/{token}', function () {
-    return view('Pages.passwordReset');
-})->name('password.reset');
-Route::get('/email/verify/{id}/{hash}', function () {
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
 
-    return view('Pages.emailVerification');
-})->name('verification.verify');
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');

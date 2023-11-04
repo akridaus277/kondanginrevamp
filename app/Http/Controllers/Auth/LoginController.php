@@ -36,8 +36,14 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         $user = Auth::attempt($credentials);
 
+
+
         if ($user) {
             $user = Auth::user();
+            if (!$user->hasVerifiedEmail()) {
+                return response()->apiError(['email' => 'Email anda belum terverifikasi, silahkan verifikasi email anda terlebih dahulu.'], 403);
+            }
+
             $token = $user->createToken(env("APP_NAME"))->plainTextToken;
             return response()->api(["token" => $token], 200);
         }

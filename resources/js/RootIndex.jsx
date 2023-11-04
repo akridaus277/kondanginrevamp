@@ -12,7 +12,7 @@ import ResetPassword from "./components/Pages/ResetPassword/ResetPassword.jsx";
 
 const RootIndex = () => {
 
-    
+
 
     return (
         <BrowserRouter>
@@ -22,8 +22,8 @@ const RootIndex = () => {
                 <Route path="/coba" element={<Coba></Coba>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
-                <Route path="/forgetPassword" element={<ForgetPassword></ForgetPassword>}></Route>
-                <Route path="/resetPassword" element={<ResetPassword></ResetPassword>}></Route>
+                <Route path="/password/forget" element={<ForgetPassword></ForgetPassword>}></Route>
+                <Route path="/password/reset/(:token)" element={<ResetPassword></ResetPassword>}></Route>
                 <Route
                     path="/koneksiTerputus"
                     element={<KoneksiTerputus></KoneksiTerputus>}

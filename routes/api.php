@@ -27,6 +27,6 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/login-google', [LoginController::class, 'loginGoogle']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
-Route::post('password/email', [PasswordResetController::class, 'sendResetLinkEmail']);
-Route::post('password/reset', [PasswordResetController::class, 'reset']);
+Route::post('/password/email', [PasswordResetController::class, 'sendResetLinkEmail']);
+Route::post('/password/reset', [PasswordResetController::class, 'reset']);
 

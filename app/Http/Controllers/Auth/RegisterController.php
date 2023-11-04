@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -49,13 +51,46 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'kecamatan' => $request->kecamatan,
+            'kota' => $request->kota,
+            'provinsi' => $request->provinsi,
         ]);
         $user->sendEmailVerificationNotification();
 
         // $token = $user->createToken('MyApp')->accessToken;
 
-        return response()->api("User registered successfully",200);
+        return response()->api("User berhasil didaftarkan.",200);
     }
+
+    // Handle the email verification.
+    public function verify(Request $request)
+    {
+        if (!$request->hasValidSignature()) {
+            return redirect()->to('/offlinePage');
+        }
+
+        // Get the user associated with the verification link
+        $user = \App\Models\User::find($request->route('id'));
+
+        if (!$user) {
+            // Handle the case where the user doesn't exist (e.g., show an error page)
+            return redirect()->to('/offlinePage');
+        }
+
+        if ($user->hasVerifiedEmail()) {
+            // Handle the case where the email has already been verified (e.g., show a message)
+            return redirect()->to('/offlinePage');
+        }
+
+        if ($user->markEmailAsVerified()) {
+            event(new Verified($user));
+        }
+
+        return redirect()->to('/')->with('verified', true);
+    }
+
 
 }
 
