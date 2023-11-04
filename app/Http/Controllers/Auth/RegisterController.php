@@ -16,15 +16,29 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
+            'no_hp'=> 'required|string|min:9|unique:users',
+            'alamat' => 'required|string|min:6',
+            'kecamatan' => 'required|string',
+            'kota' => 'required|string',
+            'provinsi' => 'required|string',
+
         ], [
             'name.required' => 'Nama wajib diisi.',
             'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
             'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Harap masukkan alamat email yang valid.',
+            'email.email' => 'Silahkan masukkan alamat email yang valid.',
             'email.max' => 'Email tidak boleh lebih dari 255 karakter.',
-            'email.unique' => 'Email sudah pernah digunakan.',
+            'email.unique' => 'Email sudah terdaftar.',
             'password.required' => 'Password wajib diisi.',
             'password.min' => 'Panjang password minimal 6 karakter.',
+            'no_hp.required' => 'Nama wajib diisi.',
+            'no_hp.min' => 'Panjang Nomor HP minimal 9 karakter.',
+            'no_hp.unique' => 'Nomor HP sudah terdaftar.',
+            'alamat.required' => 'Alamat wajib diisi.',
+            'alamat.min' => 'Panjang Alamat minimal 6 karakter.',
+            'kecamatan.required' => 'Kecamatan wajib diisi.',
+            'kota.required' => 'Kota wajib diisi.',
+            'provinsi.required' => 'Provinsi wajib diisi.',
         ]);
 
         if ($validator->fails()) {

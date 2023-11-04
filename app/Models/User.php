@@ -52,9 +52,12 @@ class User extends Authenticatable
         return $this->roles->contains('name', $role);
     }
 
-    public function givePermissionTo($permission)
+    public function giveRoleTo($roles)
     {
-        $this->permissions()->attach(Permission::whereName($permission)->first());
+        foreach ($roles as $role) {
+            $this->roles()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
+        }
     }
+
 
 }

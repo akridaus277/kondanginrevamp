@@ -25,7 +25,7 @@ class LoginController extends Controller
             'password' => 'required',
         ], [
             'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Harap masukkan alamat email yang valid.',
+            'email.email' => 'Silahkan masukkan alamat email yang valid.',
             'password.required' => 'Password wajib diisi.'
         ]);
 

@@ -38,3 +38,6 @@ Route::get('/offline', function () {
     return view('offlinePage');
 
 });
+Route::get('/password/reset/{token}', function () {
+    return view('Pages.passwordReset');
+})->name('password.reset');

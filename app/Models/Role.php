@@ -14,9 +14,12 @@ class Role extends Model
         return $this->belongsToMany(Permission::class);
     }
 
-    public function givePermissionTo($permission)
+    public function givePermissionTo($permissions)
     {
-        $this->permissions()->attach(Permission::whereName($permission)->first());
+        foreach ($permissions as $permission) {
+            $this->permissions()->attach($permission, ['created_at' => now(), 'updated_at' => now()]);
+        }
+
     }
 
 }
