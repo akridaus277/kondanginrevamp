@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('example');
-});
 
-Route::get('/coba', function () {
-    return view('coba');
-});
 
 Route::get('/login', function () {
     return view('Pages.login');
@@ -28,6 +22,27 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('Pages.register');
 });
+
+Route::get('/forgetPassword', function () {
+    return view('Pages.forgetPassword');
+});
+
+Route::get('/resetPassword', function () {
+    return view('Pages.resetPassword');
+});
+
+
+
+
+Route::get('/', function () {
+    return view('example');
+});
+
+Route::get('/coba', function () {
+    return view('coba');
+});
+
+
 
 Route::get('/koneksiTerputus', function () {
     return view('koneksiPutus');
