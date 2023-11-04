@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
+
     public function hasRole($role)
     {
         return $this->roles->contains('name', $role);
@@ -56,6 +61,13 @@ class User extends Authenticatable
     {
         foreach ($roles as $role) {
             $this->roles()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
+        }
+    }
+
+    public function giveCompanyTo($companies)
+    {
+        foreach ($companies as $company) {
+            $this->companies()->attach($company, ['created_at' => now(), 'updated_at' => now()]);
         }
     }
 

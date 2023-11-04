@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Company;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -18,20 +19,35 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => "Akri",
             'email' => "akri@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
+            'no_hp' => '089679048560',
+            'alamat' => 'Klangenan',
+            'kecamatan' => 'Klangenan',
+            'kota' => 'Cirebon',
+            'provinsi' => 'Jawa Barat'
         ]);
-        DB::table('users')->insert([
+        User::create([
             'name' => "Dhimas",
             'email' => "dhimas@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
+            'no_hp' => '089679048560',
+            'alamat' => 'Klangenan',
+            'kecamatan' => 'Klangenan',
+            'kota' => 'Cirebon',
+            'provinsi' => 'Jawa Barat'
         ]);
-        DB::table('users')->insert([
+        User::create([
             'name' => "Nanda",
             'email' => "nanda@olviwedding.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
+            'no_hp' => '089679048560',
+            'alamat' => 'Klangenan',
+            'kecamatan' => 'Klangenan',
+            'kota' => 'Cirebon',
+            'provinsi' => 'Jawa Barat'
         ]);
         //
         $akri = User::where('name', 'Akri')->first();
@@ -40,12 +56,17 @@ class UsersTableSeeder extends Seeder
 
 
         $adminRole = Role::where('name', 'admin')->first();
-        $userRole = Role::where('name', 'user')->first();
+        $tenantCompanyRole = Role::where('name', 'tenant_company')->first();
 
 
         $akri->giveRoleTo([$adminRole]);
         $dhimas->giveRoleTo([$adminRole]);
-        $nanda->giveRoleTo([$userRole]);
+        $nanda->giveRoleTo([$tenantCompanyRole]);
+
+        $companyA = Company::where('company_name', 'Company A')->first();
+        $nanda->giveCompanyTo([$companyA]);
+
+
 
     }
 }

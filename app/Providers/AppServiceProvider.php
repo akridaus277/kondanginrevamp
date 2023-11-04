@@ -18,13 +18,13 @@ class AppServiceProvider extends ServiceProvider
             return response([
                 'data' => $data,
                 'status' => $status,
-            ]);
+            ], $status);
         });
         Response::macro('apiError', function ($message, $status = 400) {
             return response([
                 'error' => $message,
                 'status' => $status,
-            ]);
+            ], $status);
         });
 
         //
