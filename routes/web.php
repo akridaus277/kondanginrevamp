@@ -38,3 +38,10 @@ Route::get('/offline', function () {
     return view('offlinePage');
 
 });
+Route::get('/password/reset/{token}', function () {
+    return view('Pages.passwordReset');
+})->name('password.reset');
+Route::get('/email/verify/{id}/{hash}', function () {
+
+    return view('Pages.emailVerification');
+})->name('verification.verify');
