@@ -1,9 +1,10 @@
 import React from "react";
-import { Card, Form, Input, Button, Select, ConfigProvider, message } from "antd";
+import { Card, Form, Input, Button, Select, ConfigProvider, message, Divider } from "antd";
 import { UserOutlined, LockOutlined, MailOutlined, WhatsAppOutlined } from "@ant-design/icons";
 import "../../Pages/Register/Register.css"
 import TextArea from "antd/es/input/TextArea";
 import { onFinish, success, validateNoWa } from "./Register";
+import { Link } from "react-router-dom";
 
 const { Option } = Select;
 
@@ -13,12 +14,10 @@ const Register = () => {
 
     return (
         <>
-        <div id="my-message"></div>
-        <div className="registration-container">
-            
-          
-                <Card className="registration-card" hoverable>
-                    <h2 className="registration-card-title">Registrasi</h2>
+            <div id="my-message"></div>
+            <div className="registration-container">
+                <Card className="registration-card">
+                    <h2 className="registration-card-title">Register</h2>
                     <div className="logo-container">
                         <div className="registration-logo">
                             <img
@@ -29,7 +28,6 @@ const Register = () => {
                             />
                         </div>
                     </div>
-
                     <ConfigProvider
                         theme={{
                             components: {
@@ -50,7 +48,7 @@ const Register = () => {
                                     colorPrimaryHover: '#516557'
 
                                 },
-                                
+
 
                             },
                         }}
@@ -74,7 +72,7 @@ const Register = () => {
 
                                 <Input
                                     prefix={<UserOutlined />}
-                                    placeholder="Nama"
+                                    placeholder="Name"
 
                                 />
 
@@ -116,7 +114,7 @@ const Register = () => {
                             >
                                 <Input.Password
                                     prefix={<LockOutlined />}
-                                    placeholder="Kata Sandi"
+                                    placeholder="Password"
                                 />
                             </Form.Item>
 
@@ -133,7 +131,7 @@ const Register = () => {
                             >
                                 <Input
                                     prefix={<WhatsAppOutlined />}
-                                    placeholder="Nomor WhatsApp"
+                                    placeholder="WhatsApp Number"
                                 />
                             </Form.Item>
 
@@ -150,9 +148,9 @@ const Register = () => {
                                     },
                                 ]}
                             >
-                                <TextArea
+                                <Input.TextArea
                                     prefix={<UserOutlined />}
-                                    placeholder="Alamat"
+                                    placeholder="Address"
                                 />
                             </Form.Item>
 
@@ -165,7 +163,7 @@ const Register = () => {
                                     },
                                 ]}
                             >
-                                <Select placeholder="Pilih Provinsi">
+                                <Select placeholder="Select Province">
                                     {/* Tambahkan opsi provinsi di sini */}
                                 </Select>
                             </Form.Item>
@@ -179,7 +177,7 @@ const Register = () => {
                                     },
                                 ]}
                             >
-                                <Select placeholder="Pilih Kota">
+                                <Select placeholder="Select City">
                                     {/* Tambahkan opsi kota di sini */}
                                 </Select>
                             </Form.Item>
@@ -193,22 +191,34 @@ const Register = () => {
                                     },
                                 ]}
                             >
-                                <Select placeholder="Pilih Kecamatan">
+                                <Select placeholder="Select Subdistrict">
                                     {/* Tambahkan opsi kecamatan di sini */}
                                 </Select>
                             </Form.Item>
 
                             <Form.Item>
-                            
+
                                 <Button
                                     onClick={success}
                                     type="primary"
                                     htmlType="submit"
-                                    className="registration-form-button"
+                                    className="registration-form-button-register"
                                     style={{ background: "#516557" }}
                                 >
-                                    Daftar
+                                    Register
                                 </Button>
+                                <Divider style={{ borderWidth: '2px', borderColor: 'black' }}><div style={{ justifyContent: 'center', textAlign: 'center', fontSize: '14px', fontWeight: 'bold' }}>OR</div></Divider>
+                                <Link to={"/login"} className="registration-form-button-login">
+                                <Button
+                                    onClick={success}
+                                    type="primary"
+                                    htmlType="submit"
+                                    className="registration-form-button-login"
+                                    style={{ background: "#516557" }}
+                                >
+                                    Log in
+                                </Button>
+                                </Link>
                             </Form.Item>
                         </Form>
                     </ConfigProvider>
