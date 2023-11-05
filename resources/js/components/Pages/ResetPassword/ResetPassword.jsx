@@ -5,6 +5,7 @@ import { onFinish } from './ResetPassword.js'
 import { LockOutlined } from '@ant-design/icons'
 import './ResetPassword.css'
 import {handleNewPasswordChangeON } from './ResetPassword.js'
+import { Link } from 'react-router-dom'
 
 const ResetPassword = () => {
     const [form] = Form.useForm();
@@ -25,7 +26,7 @@ const ResetPassword = () => {
                     className="logo-container"
                 // style={{ height: "128px", width: "128px" }}
                 >
-                    <div className="reset-password-password-logo">
+                    <div className="reset-password-password-logo logo-animation">
                         <img
                             src="../images/icons/kondangin.png"
                             height={"128px"}
@@ -130,6 +131,8 @@ const ResetPassword = () => {
                                 </Button>
 
                                 <Divider style={{ borderWidth: '2px', borderColor: 'black' }}><div style={{ justifyContent: 'center', textAlign: 'center', fontSize: '14px', fontWeight: 'bold' }}>OR</div></Divider>
+                               
+                               <Link to={"/login"} className='reset-password-password-form-button'>
                                 <Button
                                     type="primary"
                                     htmlType="submit"
@@ -140,6 +143,7 @@ const ResetPassword = () => {
                                 >
                                     Login Page
                                 </Button>
+                                </Link>
 
                             </div>
 

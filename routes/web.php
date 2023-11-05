@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/landingPage', function () {
+    return view('Pages.landingPage');
+});
 
 Route::get('/login', function () {
     return view('Pages.login');
@@ -29,6 +32,18 @@ Route::get('/forgetPassword', function () {
 
 Route::get('/resetPassword', function () {
     return view('Pages.resetPassword');
+});
+
+Route::get('/verifEmail', function () {
+    return view('Pages.verifEmail');
+});
+
+Route::get('/verifEmailSuccess', function () {
+    return view('Pages.verifEmailSuccess');
+});
+
+Route::get('/verifEmailFailed', function () {
+    return view('Pages.verifEmailFailed');
 });
 
 

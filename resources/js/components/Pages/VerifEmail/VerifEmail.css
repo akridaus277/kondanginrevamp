@@ -1,0 +1,202 @@
+.verif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #f0f2f5; */
+}
+
+.verif-card {
+    width: 300px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.verif-card-title {
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.verif-logo {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+    /* Mengatur elemen menjadi lingkaran */
+    box-shadow: 0 0 15px #516557;
+    /* Bayangan */
+    margin-bottom: 20px;
+}
+
+.verif-form-forgot {
+    float: right;
+}
+
+
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Jarak antara tombol-tombol */
+  }
+  
+  /* Atur ukuran tombol Google */
+  .verif-form-google {
+    width: 100%; /* Tombol Google mengisi seluruh lebar kontainer */
+  }
+
+  .verif-form-button {
+    width: 100%;
+  }
+  
+  .logo-animation {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .logo-animation::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: borderPulseSatu 3s infinite;
+  }
+  
+  @keyframes borderPulseSatu {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 15px #516557;
+    }
+    50% {
+      transform: scale(1);
+      box-shadow: 0 0 15px #516557;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: transparent;
+    }
+  }
+
+
+
+
+@media (min-width: 1024px) {
+
+    .verif-card {
+        width: 400px;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+/* Mengatur tampilan tombol saat lebar layar kurang dari atau sama dengan 300px */
+@media (max-width: 300px) {
+ 
+    .verif-form-google {
+    
+      word-wrap: break-word;
+      white-space: normal;
+      width: auto;
+      text-align: center;
+    }
+
+    .verif-form-button {
+        width: auto;
+        word-wrap: break-word;
+        white-space: normal;
+        text-align: center;
+      }
+      
+  
+  }
+
+
+/* Ukuran layar kurang dari atau sama dengan 768px (perangkat mobile) */
+@media (max-width: 768px) {
+
+
+
+    .verif-card {
+        width: 80%;
+        /* Atur lebar kartu agar menyesuaikan layar mobile */
+    }
+
+    .button-container {
+        flex-direction: column;
+      }
+    
+ 
+
+
+}
+
+@media (max-height: 480px) {
+
+    .verif-container {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        /* background-color: #f0f2f5; */
+    }
+
+  
+
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #516557 !important;
+    border-color: #516557 !important;
+}
+
+.ant-checkbox .ant-checkbox-inner {
+    border-color: #516557 !important;
+}
+
+
+/* Ukuran layar kurang dari atau sama dengan 360px (perangkat mobile) */
+@media (max-width: 370px) {
+
+    .rememberMe-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        /* Pusatkan vertikal */
+    }
+
+   
+
+
+    .rememberMe {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Pusatkan teks horizontal */
+    }
+
+    .verif-form-forgot {
+        float: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Pusatkan teks horizontal */
+    }
+
+    .ant-checkbox-wrapper:after {
+        display: none
+    }
+
+}

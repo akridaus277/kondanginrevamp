@@ -8,6 +8,10 @@ import Login from "./components/Pages/Login/Login.jsx";
 import Register from "./components/Pages/Register/Register.jsx";
 import ForgetPassword from "./components/Pages/FogetPassword/ForgetPassword.jsx";
 import ResetPassword from "./components/Pages/ResetPassword/ResetPassword.jsx";
+import VerifEmailSuccess from "./components/Pages/VerifEmailSuccess/VerifEmailSuccess.jsx";
+import VerifEmailFailed from "./components/Pages/VerifEmailFailed/VerifEmailFailed.jsx";
+import VerifEmail from "./components/Pages/VerifEmail/VerifEmail.jsx";
+import LandingPage from "./components/Pages/LandingPage/LandingPage.jsx";
 
 
 const RootIndex = () => {
@@ -19,11 +23,15 @@ const RootIndex = () => {
 
             <Routes>
                 <Route path="/" element={<Register></Register>}></Route>
+                <Route path="/landingPage" element={<LandingPage></LandingPage>}></Route>
                 <Route path="/coba" element={<Coba></Coba>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/forgetPassword" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="/resetPassword" element={<ResetPassword></ResetPassword>}></Route>
+                <Route path="/verifEmail" element={<VerifEmail></VerifEmail>}></Route>
+                <Route path="/verifEmailSuccess" element={<VerifEmailSuccess></VerifEmailSuccess>}></Route>
+                <Route path="/verifEmailFailed" element={<VerifEmailFailed></VerifEmailFailed>}></Route>
                 <Route
                     path="/koneksiTerputus"
                     element={<KoneksiTerputus></KoneksiTerputus>}
@@ -67,5 +75,25 @@ if (document.getElementById("forgetPassword")) {
 
 if (document.getElementById("resetPassword")) {
     const root = createRoot(document.getElementById("resetPassword"));
+    root.render(<RootIndex></RootIndex>);
+}
+
+if (document.getElementById("verifEmailSuccess")) {
+    const root = createRoot(document.getElementById("verifEmailSuccess"));
+    root.render(<RootIndex></RootIndex>);
+}
+
+if (document.getElementById("verifEmailFailed")) {
+    const root = createRoot(document.getElementById("verifEmailFailed"));
+    root.render(<RootIndex></RootIndex>);
+}
+
+if (document.getElementById("verifEmail")) {
+    const root = createRoot(document.getElementById("verifEmail"));
+    root.render(<RootIndex></RootIndex>);
+}
+
+if (document.getElementById("landingPage")) {
+    const root = createRoot(document.getElementById("landingPage"));
     root.render(<RootIndex></RootIndex>);
 }
