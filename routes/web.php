@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ Route::get('/coba', function () {
 
 
 Route::get('/koneksiTerputus', function () {
-    return view('koneksiPutus');
+    return view('offlinePage');
 });
 
 Route::get('/offline', function () {
@@ -54,8 +54,5 @@ Route::get('/offline', function () {
     return view('offlinePage');
 
 });
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+Route::get('/email/verify/{id}/{token}', [RegisterController::class, 'verify']);
 
-    return redirect('/');
-})->middleware(['auth', 'signed'])->name('verification.verify');

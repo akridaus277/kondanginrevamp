@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmailVerification;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailVerificationMail;
 
 
 class RegisterController extends Controller
@@ -57,7 +61,11 @@ class RegisterController extends Controller
             'kota' => $request->kota,
             'provinsi' => $request->provinsi,
         ]);
-        $user->sendEmailVerificationNotification();
+        // $user->sendEmailVerificationNotification();
+        $emailVerification = new EmailVerification(['token' => Str::random(64)]);
+        $user->emailVerification()->save($emailVerification);
+        Mail::to($user->email)->send(new EmailVerificationMail($user->name,$emailVerification->token,$user->id));
+
 
         // $token = $user->createToken('MyApp')->accessToken;
 
@@ -65,30 +73,21 @@ class RegisterController extends Controller
     }
 
     // Handle the email verification.
-    public function verify(Request $request)
+    public function verify($id, $token)
     {
-        if (!$request->hasValidSignature()) {
-            return redirect()->to('/offlinePage');
+        $emailVerification = EmailVerification::where(['user_id' => $id, 'token' => $token])->first();
+        if (!$emailVerification) {
+            return redirect()->to('/koneksiTerputus');
         }
-
-        // Get the user associated with the verification link
-        $user = \App\Models\User::find($request->route('id'));
-
+        $user = User::where(['id' => $id])->first();
         if (!$user) {
-            // Handle the case where the user doesn't exist (e.g., show an error page)
-            return redirect()->to('/offlinePage');
+            return redirect()->to('/koneksiTerputus');
         }
+        $user->email_verified_at = now();
+        $user->save();
+        $emailVerification->delete();
+        return redirect()->to('/login');
 
-        if ($user->hasVerifiedEmail()) {
-            // Handle the case where the email has already been verified (e.g., show a message)
-            return redirect()->to('/offlinePage');
-        }
-
-        if ($user->markEmailAsVerified()) {
-            event(new Verified($user));
-        }
-
-        return redirect()->to('/')->with('verified', true);
     }
 
 

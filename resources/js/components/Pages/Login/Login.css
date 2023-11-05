@@ -47,7 +47,7 @@
     justify-content: center;
     gap: 10px; /* Jarak antara tombol-tombol */
   }
-  
+
   /* Atur ukuran tombol Google */
   .login-form-google {
     width: 100%; /* Tombol Google mengisi seluruh lebar kontainer */
@@ -56,7 +56,7 @@
   .login-form-button {
     width: 100%;
   }
-  
+
 
 
 
@@ -73,9 +73,9 @@
 
 /* Mengatur tampilan tombol saat lebar layar kurang dari atau sama dengan 300px */
 @media (max-width: 300px) {
- 
+
     .login-form-google {
-    
+
       word-wrap: break-word;
       white-space: normal;
       width: auto;
@@ -88,8 +88,8 @@
         white-space: normal;
         text-align: center;
       }
-      
-  
+
+
   }
 
 
@@ -106,8 +106,8 @@
     .button-container {
         flex-direction: column;
       }
-    
- 
+
+
 
 
 }
@@ -120,7 +120,7 @@
         /* background-color: #f0f2f5; */
     }
 
-  
+
 
 }
 
@@ -145,7 +145,7 @@
         /* Pusatkan vertikal */
     }
 
-   
+
 
 
     .rememberMe {
