@@ -90,6 +90,31 @@ class RegisterController extends Controller
 
     }
 
+    public function verifyWait(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255',
+        ], [
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Silahkan masukkan alamat email yang valid.',
+            'email.max' => 'Email tidak boleh lebih dari 255 karakter.',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->apiError($validator->errors(), 400);
+        }
+        $user = User::where(['email' => $request->email])->first();
+        if (!$user) {
+            return response()->apiError("User tidak ditemukan",404);
+        }
+        if (!$user->hasVerifiedEmail()) {
+            return response()->apiError("Akun anda belum terverifikasi", 403);
+        }
+
+        return response()->api("Akun anda berhasil terverifikasi", 200);
+
+    }
+
 
 }
 
