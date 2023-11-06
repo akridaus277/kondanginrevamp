@@ -15,7 +15,7 @@ const ForgetPassword = () => {
                     className="logo-container"
                 // style={{ height: "128px", width: "128px" }}
                 >
-                    <div className="forget-password-logo">
+                    <div className="forget-password-logo logo-animation">
                         <img
                             src="../images/icons/kondangin.png"
                             height={"128px"}

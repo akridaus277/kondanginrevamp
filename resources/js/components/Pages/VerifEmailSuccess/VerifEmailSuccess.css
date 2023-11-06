@@ -1,0 +1,268 @@
+.verif-email-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #f0f2f5; */
+}
+
+.verif-email-card {
+    width: 300px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.verif-email-card-title {
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.ant-result{
+    padding: 30px 3px;
+}
+
+.ant-result .ant-result-icon>.anticon{
+    font-size: 50px;
+}
+
+.verif-email-logo {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+    /* Mengatur elemen menjadi lingkaran */
+    box-shadow: 0 0 15px #516557;
+    /* Bayangan */
+   
+}
+
+.verif-email-form-forgot {
+    float: right;
+}
+
+
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Jarak antara tombol-tombol */
+  }
+  
+  /* Atur ukuran tombol Google */
+  .verif-email-form-google {
+    width: 100%; /* Tombol Google mengisi seluruh lebar kontainer */
+  }
+
+  .verif-email-form-button {
+    width: 100%;
+  }
+  
+
+  .keterangan{
+   font-size: 14px;
+  
+    
+    margin-top: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typingAnimation 3s steps(40) infinite;
+  }
+
+  @keyframes typingAnimation {
+    0% {
+        width: 0;
+        text-align: center;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.logo-animation {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .logo-animation::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: borderPulseSatu 3s infinite;
+  }
+  
+  @keyframes borderPulseSatu {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 15px #516557;
+    }
+    50% {
+      transform: scale(1);
+      box-shadow: 0 0 15px #516557;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: transparent;
+    }
+  }
+  
+
+.icon-animation-success {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .icon-animation-success::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: borderPulseDua 3s infinite;
+  }
+  
+  @keyframes borderPulseDua {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 15px #52c41a;
+    }
+    50% {
+      transform: scale(1);
+      box-shadow: 0 0 15px #52c41a;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: transparent;
+    }
+  }
+  
+
+
+
+
+@media (min-width: 1024px) {
+
+    .verif-email-card {
+        width: 400px;
+        justify-content: center;
+        align-items: center;
+    }
+
+   
+
+}
+
+/* Mengatur tampilan tombol saat lebar layar kurang dari atau sama dengan 300px */
+@media (max-width: 300px) {
+ 
+    .verif-email-form-google {
+    
+      word-wrap: break-word;
+      white-space: normal;
+      width: auto;
+      text-align: center;
+    }
+
+    .verif-email-form-button {
+        width: auto;
+        word-wrap: break-word;
+        white-space: normal;
+        text-align: center;
+      }
+      
+  
+  }
+
+
+/* Ukuran layar kurang dari atau sama dengan 768px (perangkat mobile) */
+@media (max-width: 768px) {
+
+
+
+    .verif-email-card {
+        width: 80%;
+        /* Atur lebar kartu agar menyesuaikan layar mobile */
+    }
+
+    .button-container {
+        flex-direction: column;
+      }
+    
+ 
+
+
+}
+
+@media (max-height: 480px) {
+
+    .verif-email-container {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        /* background-color: #f0f2f5; */
+    }
+
+  
+
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #516557 !important;
+    border-color: #516557 !important;
+}
+
+.ant-checkbox .ant-checkbox-inner {
+    border-color: #516557 !important;
+}
+
+
+/* Ukuran layar kurang dari atau sama dengan 360px (perangkat mobile) */
+@media (max-width: 370px) {
+
+    .rememberMe-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        /* Pusatkan vertikal */
+    }
+
+   
+
+
+    .rememberMe {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Pusatkan teks horizontal */
+    }
+
+    .verif-email-form-forgot {
+        float: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Pusatkan teks horizontal */
+    }
+
+    .ant-checkbox-wrapper:after {
+        display: none
+    }
+
+}

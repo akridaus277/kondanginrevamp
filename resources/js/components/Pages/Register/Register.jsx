@@ -19,7 +19,7 @@ const Register = () => {
                 <Card className="registration-card">
                     <h2 className="registration-card-title">Register</h2>
                     <div className="logo-container">
-                        <div className="registration-logo">
+                        <div className="registration-logo logo-animation">
                             <img
                                 src="../images/icons/kondangin.png"
                                 height={"128px"}

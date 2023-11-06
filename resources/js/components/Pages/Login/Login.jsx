@@ -40,7 +40,7 @@ const Login = () => {
                     className="logo-container"
                 // style={{ height: "128px", width: "128px" }}
                 >
-                    <div className="login-logo">
+                    <div className="login-logo logo-animation">
                         <img
                             src="../images/icons/kondangin.png"
                             height={"128px"}

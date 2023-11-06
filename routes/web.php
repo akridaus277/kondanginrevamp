@@ -15,6 +15,9 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 
+Route::get('/landingPage', function () {
+    return view('Pages.landingPage');
+});
 
 Route::get('/login', function () {
     return view('Pages.login');
@@ -31,6 +34,18 @@ Route::get('/password/forget', function () {
 Route::get('/password/reset/{token}', function () {
     return view('Pages.resetPassword');
 })->name('password.reset');
+
+Route::get('/verifEmail', function () {
+    return view('Pages.verifEmail');
+});
+
+Route::get('/verifEmailSuccess', function () {
+    return view('Pages.verifEmailSuccess');
+});
+
+Route::get('/verifEmailFailed', function () {
+    return view('Pages.verifEmailFailed');
+});
 
 
 
