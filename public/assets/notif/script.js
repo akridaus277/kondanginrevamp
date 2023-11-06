@@ -35,16 +35,26 @@ function showNotification() {
 }
 
 function closeNotification() {
-  notification.style.display = "none";
+  // notification.style.display = "none";
+  notification.classList.add("closing"); // Tambahkan class "closing" untuk animasi fade-out
+            setTimeout(function () {
+                notification.style.display = "none";
+                notification.classList.remove("closing"); // Hapus class "closing" setelah animasi selesai
+                setTimeout(autoShowAndHideNotification, 30000); // Muncul kembali setelah 30 detik
+            }, 500);
 }
 
 function autoShowAndHideNotification() {
-  showNotification();
+  setTimeout(function(){
+    showNotification();
 
-  setTimeout(function () {
-      closeNotification();
-      setTimeout(autoShowAndHideNotification, 30000); // Muncul kembali setelah 30 detik
-  }, 6000); // Tutup setelah 6 detik
+    setTimeout(function () {
+        closeNotification();
+        setTimeout(autoShowAndHideNotification, 30000); // Muncul kembali setelah 30 detik
+    }, 6000); // Tutup setelah 6 detik
+
+  }, 10000)
+
 }
 
 window.onload = autoShowAndHideNotification;
