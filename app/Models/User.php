@@ -58,29 +58,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->emailVerification()->save($emailVerification);
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
     public function companies()
     {
         return $this->belongsToMany(Company::class);
     }
 
-    public function hasRole($role)
-    {
-        return $this->roles->contains('name', $role);
-    }
-
-    public function giveRoleTo($roles)
-    {
-        foreach ($roles as $role) {
-            $this->roles()->attach($role, ['created_at' => now(), 'updated_at' => now()]);
-        }
-    }
-
-    public function giveCompanyTo($companies)
+    public function setCompany($companies)
     {
         foreach ($companies as $company) {
             $this->companies()->attach($company, ['created_at' => now(), 'updated_at' => now()]);

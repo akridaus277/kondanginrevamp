@@ -12,9 +12,7 @@ class CompaniesTableSeeder extends Seeder
     {
         // Data dummy untuk tabel companies
         $datas = [
-            ['company_name' => 'Company A'],
-            ['company_name' => 'Company B'],
-            ['company_name' => 'Company C'],
+            ['company_name' => 'Hawa Undangan']
             // Tambahkan data lain sesuai kebutuhan
         ];
 

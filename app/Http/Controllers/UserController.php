@@ -12,6 +12,8 @@ class UserController extends Controller
         $user = $request->user();
         $userDTO = new UserInfoDTO($user);
 
+        // $userDTO = $user->domainRoles;
+
         return response()->api($userDTO,200);
     }
     //

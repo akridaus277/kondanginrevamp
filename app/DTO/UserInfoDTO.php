@@ -2,6 +2,11 @@
 
 namespace App\DTO;
 
+use App\Models\DomainAccessConfiguration;
+use App\Models\DomainFeaturePermission;
+use App\Models\DomainRole;
+use Illuminate\Support\Facades\DB;
+
 class UserInfoDTO
 {
 
@@ -9,7 +14,8 @@ class UserInfoDTO
     public $email;
     public $companyName;
     public $roles;
-    public $permissions;
+    public $features;
+    public $featurePermissions;
     // Tambahkan properti lain sesuai kebutuhan
 
     public function __construct($user)
@@ -17,21 +23,15 @@ class UserInfoDTO
         $this->name = $user->name;
         $this->email = $user->email;
         $companyName = $user->companies()->first()? $user->companies()->first()->company_name : null;
-        $roles = [];
-        $permissions = collect();
 
+        $roles = DomainAccessConfiguration::getRolesNameByUser($user);
+        $featurePermissions = DomainAccessConfiguration::getFeaturesAndPermissionsNameByUser($user);
+        $features = DomainAccessConfiguration::getFeaturesNameByUser($user);
 
-        foreach ($user->roles as $role) {
-            array_push($roles, $role->name);
-            foreach ($role->permissions as $permission) {
-                $permissions->add($permission->name);
-            }
-
-
-        }
         $this->companyName = $companyName;
         $this->roles = $roles;
-        $this->permissions = $permissions;
-        // Isi properti lain sesuai kebutuhan
+        $this->features = $features;
+        $this->featurePermissions = $featurePermissions;
+
     }
 }

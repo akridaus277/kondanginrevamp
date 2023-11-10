@@ -77,16 +77,16 @@ class RegisterController extends Controller
     {
         $emailVerification = EmailVerification::where(['user_id' => $id, 'token' => $token])->first();
         if (!$emailVerification) {
-            return redirect()->to('/koneksiTerputus');
+            return redirect()->to('/verifEmailFailed');
         }
         $user = User::where(['id' => $id])->first();
         if (!$user) {
-            return redirect()->to('/koneksiTerputus');
+            return redirect()->to('/verifEmailFailed');
         }
         $user->email_verified_at = now();
         $user->save();
         $emailVerification->delete();
-        return redirect()->to('/login');
+        return redirect()->to('/verifEmailSuccess');
 
     }
 

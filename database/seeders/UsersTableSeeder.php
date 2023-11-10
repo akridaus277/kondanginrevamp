@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Company;
-use App\Models\Role;
+use App\Models\DomainRole;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +27,8 @@ class UsersTableSeeder extends Seeder
             'alamat' => 'Klangenan',
             'kecamatan' => 'Klangenan',
             'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat'
+            'provinsi' => 'Jawa Barat',
+            'email_verified_at' => now()
         ]);
         User::create([
             'name' => "Dhimas",
@@ -37,34 +38,68 @@ class UsersTableSeeder extends Seeder
             'alamat' => 'Klangenan',
             'kecamatan' => 'Klangenan',
             'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat'
+            'provinsi' => 'Jawa Barat',
+            'email_verified_at' => now()
         ]);
         User::create([
-            'name' => "Nanda",
-            'email' => "nanda@olviwedding.org",
+            'name' => "Hawa Undangan",
+            'email' => "hawa@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
             'no_hp' => '089679048560',
             'alamat' => 'Klangenan',
             'kecamatan' => 'Klangenan',
             'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat'
+            'provinsi' => 'Jawa Barat',
+            'email_verified_at' => now()
+        ]);
+        User::create([
+            'name' => "Nanda",
+            'email' => "nanda@kondangin.org",
+            'password' => Hash::make('Kondangin1!'), // You can set a default password here
+            'no_hp' => '089679048560',
+            'alamat' => 'Klangenan',
+            'kecamatan' => 'Klangenan',
+            'kota' => 'Cirebon',
+            'provinsi' => 'Jawa Barat',
+            'email_verified_at' => now()
+        ]);
+        User::create([
+            'name' => "Dr. Tirta",
+            'email' => "tirta@kondangin.org",
+            'password' => Hash::make('Kondangin1!'), // You can set a default password here
+            'no_hp' => '089679048560',
+            'alamat' => 'Klangenan',
+            'kecamatan' => 'Klangenan',
+            'kota' => 'Cirebon',
+            'provinsi' => 'Jawa Barat',
+            'email_verified_at' => now()
+        ]);
+        User::create([
+            'name' => "Faishal",
+            'email' => "faishal@kondangin.org",
+            'password' => Hash::make('Kondangin1!'), // You can set a default password here
+            'no_hp' => '089679048560',
+            'alamat' => 'Klangenan',
+            'kecamatan' => 'Klangenan',
+            'kota' => 'Cirebon',
+            'provinsi' => 'Jawa Barat',
+            'email_verified_at' => now()
         ]);
         //
         $akri = User::where('name', 'Akri')->first();
         $dhimas = User::where('name', 'Dhimas')->first();
         $nanda = User::where('name', 'Nanda')->first();
+        $hawa = User::where('name', 'Hawa Undangan')->first();
+        $tirta = User::where('name', 'Dr. Tirta')->first();
 
 
-        $adminRole = Role::where('name', 'admin')->first();
-        $tenantCompanyRole = Role::where('name', 'tenant_company')->first();
+        $adminRole = DomainRole::where('name', 'admin')->first();
+        $eventOrganizerRole = DomainRole::where('name', 'event_organizer')->first();
+        $resellerRole = DomainRole::where('name', 'reseller')->first();
+        $retailerRole = DomainRole::where('name', 'retailer')->first();
 
-
-        $akri->giveRoleTo([$adminRole]);
-        $dhimas->giveRoleTo([$adminRole]);
-        $nanda->giveRoleTo([$tenantCompanyRole]);
-
-        $companyA = Company::where('company_name', 'Company A')->first();
-        $nanda->giveCompanyTo([$companyA]);
+        $companyA = Company::where('company_name', 'Hawa Undangan')->first();
+        $hawa->setCompany([$companyA]);
 
 
 
