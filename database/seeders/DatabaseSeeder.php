@@ -20,12 +20,17 @@ class DatabaseSeeder extends Seeder
         $this->call(DomainRoleTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(DomainAccessConfigurationTableSeeder::class);
+        $this->call(TenantTypeTableSeeder::class);
+        $this->call(TenantPackageTableSeeder::class);
+        $this->call(TenantThemeTableSeeder::class);
         $this->call(TenantTableSeeder::class);
         $this->call(TenantRoleTableSeeder::class);
         $this->call(TenantFeatureTableSeeder::class);
         $this->call(TenantPermissionTableSeeder::class);
         $this->call(TenantFeaturePermissionTableSeeder::class);
         $this->call(TenantAccessConfigurationTableSeeder::class);
+        $this->call(TenantPackageFeatureConstraintTableSeeder::class);
+        $this->call(TenantFeatureMappingTableSeeder::class);
 
         // \App\Models\User::factory(10)->create();
     }
