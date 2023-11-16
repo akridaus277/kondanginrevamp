@@ -10,12 +10,13 @@
     <link href="{{ asset('dashboard/src/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet">
 
     <link href="{{ asset('dashboard/src/dist/css/style.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('dashboard/src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
     @laravelPWA
 </head>
 <body>
-    
 
-        
+
+
         <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
@@ -30,7 +31,7 @@
 
 
 
-        <script src="{{ asset('dashboard/src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+
         <script src="{{ asset('dashboard/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 
         <script src="{{ asset('dashboard/src/dist/js/app-style-switcher.js') }}"></script>
