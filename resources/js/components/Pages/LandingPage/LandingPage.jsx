@@ -1,7 +1,7 @@
 import React from 'react'
 import { getToken } from '../../../helper/auth';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+import { Button, Card, Carousel, Rate } from 'antd';
 import { Swiper, SwiperSlide, Pagination } from 'swiper/react';
 import { FloatingWhatsApp } from 'react-floating-whatsapp';
 import { UserAddOutlined } from '@ant-design/icons';
@@ -10,6 +10,8 @@ import { UserAddOutlined } from '@ant-design/icons';
 // import "swiper/css";
 // import "swiper/css/pagination";
 
+
+
 const LandingPage = () => {
   const numbersHp = ['6289679048560', '6285326413810']
 
@@ -17,19 +19,25 @@ const LandingPage = () => {
 
   const selectNumber = numbersHp[randomIndex];
 
-
-  const namaPem = ["Fitria", "Disya", "Fitrawati", "Nafila", "Assalia", "Sianne", "Ike", "Anindita", "Indah", "Ariesta", "Amalia", "Esra", "Hardianti", "Valerie", "Syarifah", "Hilyah", "Evelin", "Adzkiya", "Agustin", "Teddo", "Wildan", "Ridhwan", "Azrul", "Yudha", "Riechal", "Faishal", "Sakti", "Sumandi", "Abdul", "Aburachman", "Rheza", "Andi", "Adisdi", "Devito", "Syarief", "Deka", "Fauzi", "Bimo", "Syahdian", "Adam", "Yosafat", "Aulia", "Aldi", "Avicenna", "Mirza", "Marza", "Ryan", "Aggil", "Kenneth", "Allen", "Rizka", "Azmi", "Rian", "Farqy", "Alvino", "Muhamad", "Jova", "Cakra", "Hudzaifah", "Ray", "Nauval", "Fajri", "Reynaldi", "Garin", "Axel", "Achmad", "Fakhrul", "Arie", "Ferhat", "Hani", "Adelia", "Neva", "Nabila", "Aprilita", "Tesa", "Natasya", "Derisa", "Defara", "Kikhmah", "Hasiana", "Saqina", "Lavinta", "Feby", "Maureen", "Wulan", "Ardha", "Henny", "Silvyna", "Caryne", "Anisah", "Amelinda", "Ries", "Winda", "Sendy", "Arsya", "Agustina", "Muthia", "Dyah", "Afrida", "Rynelda"]
-
-  const rindex = Math.floor(Math.random() * namaPem.length);
-
-  const selectnama = namaPem[rindex];
-
-
-  const kota = ["Kab. Bandung", "Kab. Bandung Barat", "Kab. Bekasi", "Kab. Bogor", "Kab. Ciamis", "Kab. Cianjur", "Kab. Cirebon", "Kab. Garut", "Kab. Indramayu", "Kab. Karawang", "Kab. Kuningan", "Kab. Majalengka", "Kab. Pangandaran", "Kab. Purwakarta", "Kab. Subang", "Kab. Sukabumi", "Kab. Sumedang", "Kab. Tasikmalaya", "Kota Bandung", "Kota Banjar", "Kota Bekasi", "Kota Bogor", "Kota Cimahi", "Kota Cirebon", "Kota Depok", "Kota Sukabumi", "Kota Tasikmalaya", "Kab. Bangkalan", "Kab. Banyuwangi", "Kab. Blitar", "Kab. Bojonegoro", "Kab. Bondowoso", "Kab. Gresik", "Kab. Jember", "Kab. Jombang", "Kab. Kediri", "Kab. Lamongan", "Kab. Lumajang", "Kab. Madiun", "Kab. Magetan", "Kab. Malang", "Kab. Mojokerto", "Kab. Nganjuk", "Kab. Ngawi", "Kab. Pacitan", "Kab. Pamekasan", "Kab. Pasuruan", "Kab. Ponorogo", "Kab. Probolinggo", "Kab. Sampang", "Kab. Sidoarjo", "Kab. Situbondo", "Kab. Sumenep", "Kab. Trenggalek", "Kab. Tuban", "Kab. Tulungagung", "Kota Batu", "Kota Blitar", "Kota Kediri", "Kota Madiun", "Kota Malang", "Kota Mojokerto", "Kota Pasuruan", "Kota Probolinggo", "Kota Surabaya", "Kab. Banjarnegara", "Kab. Banyumas", "Kab. Batang", "Kab. Blora", "Kab. Boyolali", "Kab. Brebes", "Kab. Cilacap", "Kab. Demak", "Kab. Grobogan", "Kab. Jepara", "Kab. Karanganyar", "Kab. Kebumen", "Kab. Kendal", "Kab. Klaten", "Kab. Kudus", "Kab. Magelang", "Kab. Pati", "Kab. Pekalongan", "Kab. Pemalang", "Kab. Purbalingga", "Kab. Purworejo", "Kab. Rembang", "Kab. Semarang", "Kab. Sragen", "Kab. Sukoharjo", "Kab. Tegal", "Kab. Temanggung", "Kab. Wonogiri", "Kab. Wonosobo", "Kota Magelang", "Kota Pekalongan", "Kota Salatiga", "Kota Semarang", "Kota Surakarta", "Kota Tegal", "Kab. Barito Selatan", "Kab. Barito Timur", "Kab. Barito Utara", "Kab. Gunung Mas", "Kab. Kapuas", "Kab. Katingan", "Kab. Kotawaringin Barat", "Kab. Kotawaringin Timur", "Kab. Lamandau", "Kab. Murung Raya", "Kab. Pulang Pisau", "Kab. Sukamara", "Kab. Seruyan", "Kota Palangka Raya"]
-
-  const acak = Math.floor(Math.random() * kota.length);
-
-  const selectkota = kota[acak]
+  const testimonialData = [
+    {
+      name: 'John & Jane',
+      image: 'assets/img/about/about.png',
+      domain: 'example.com',
+      package: 'Gold Package',
+      rating: 5,
+      review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla erat nec velit maximus. Proin ut purus nec est cursus volutpat. In vehicula id lectus non vestibulum.',
+    },
+    {
+      name: 'Alice & Bob',
+      image: 'assets/img/about/about.png',
+      domain: 'sample.com',
+      package: 'Platinum Package',
+      rating: 4,
+      review: 'Fusce eget justo eu lectus dignissim accumsan. Nullam auctor tincidunt odio, ut tristique elit volutpat non. Vestibulum nec lorem id risus finibus facilisis.',
+    },
+    // Add more testimonial data as needed
+  ];
 
   // let token = getExpirationToken()
   let token = getToken()
@@ -111,39 +119,38 @@ const LandingPage = () => {
         </section>{/* End Hero */}
         <main id="main">
           {/* ======= Clients Section ======= */}
-          {/* <section id="clients" class="clients clients">
+          <section id="clients" class="clients clients">
 <div class="container">
 
   <div class="row">
-
     <div class="col-lg-2 col-md-4 col-6">
-      <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" data-aos="zoom-in">
+      <img src="assets/img/clients/client-1.png" class="img-fluid" alt="" data-aos="zoom-in"/>
     </div>
 
     <div class="col-lg-2 col-md-4 col-6">
-      <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+      <img src="assets/img/clients/client-2.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100"/>
     </div>
 
     <div class="col-lg-2 col-md-4 col-6">
-      <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200">
+      <img src="assets/img/clients/client-3.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200"/>
     </div>
 
     <div class="col-lg-2 col-md-4 col-6">
-      <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="300">
+      <img src="assets/img/clients/client-4.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="300"/>
     </div>
 
     <div class="col-lg-2 col-md-4 col-6">
-      <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="400">
+      <img src="assets/img/clients/client-5.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="400"/>
     </div>
 
     <div class="col-lg-2 col-md-4 col-6">
-      <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
+      <img src="assets/img/clients/client-6.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500"/>
     </div>
 
   </div>
 
 </div>
-    </section> */}
+    </section>
           {/* End Clients Section */}
           {/* ======= About Us Section ======= */}
           <section id="tentang" className="about">
@@ -415,195 +422,35 @@ const LandingPage = () => {
 
           <section id="testimonials" className="testimonials section-bg">
             <div className="container">
-              <div className="section-title" data-aos="fade-up">
+              <div className="section-title" data-aos="fade-up" style={{marginBottom:'10px'}}>
                 <h2>Testimonials</h2>
                 <p>Apa kata mereka tentang pelayanan KONDANGIN.ORG ?</p>
               </div>
               <div className="testimonials-slider" data-aos="fade-up" >
-                <div>
-
-                  {/* <Swiper
-                                        pagination={{
-                                            dynamicBullets: true,
-                                            el: '.swiper-pagination',
-                                            type: 'bullets'
-                                        }}
-                                        modules={[Pagination]}
-                                        className="mySwiper"
-                                        autoplay={{
-                                            delay: 100,
-
-                                        }}
-
-                                    >
-                                        <SwiperSlide
-
-                                        >
-
-                                            <div className="testimonial-wrap">
-                                                <div className="testimonial-item">
-                                                    <img src="assets/img/testimonials/silver.jpg" className="testimonial-img" alt />
-                                                    <h3>Desta & Silvi</h3>
-                                                    <h4>Manager Operasional Daihatsu</h4>
-                                                    <p>
-                                                        <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                        Pelayanan ramah, cepat, dan berani saya bilang ini yg terbaik.
-                                                        Sempet bingung waktu milih mau pakai jasa siapa untuk undangan online, dan akhirnya kecantol banget sama desain dan contoh" undangan online dari KONDANGIN.ORG ini.
-                                                        Uda siap"in semuanya dari 3 hari sebelum pesen, dan saat apply pun sepertinya itu malam jam 23.00 WITA, ga nyangka dong karena sempat bingung, chat admin, dan jam malam pun masih ngebales whatsapp saya. Apply plus transfer tengah malem, eeh besok paginya kelar dong....ga nyangka, ditinggal tidur doang uda kelar hahaha
-                                                        Dengan segala revisi yang aku bilang pelan", dan ternyata KLOP laah undangannya, suka banget laah pokoknya! TERBAIKKKK
-                                                        <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>      <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/ayu.jpg" className="testimonial-img" alt />
-                                                <h3>Ayu & Yudhis</h3>
-                                                <h4>Designer</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Gak nyesel sama sekali bikin e-invitation di Kondangin. Isi form jam 02.00 pagi, jldan langsung dibales sm admin nya (curiga admin nya ga tidur ikut pusing mikirin nikahan) dan jam 02.30 pagi udah jadi dong masaaa.. bersedia untuk revisi ini itu, ngasih advice kata2nya, ngasih advice sebar undangannya juga, puasss lah pokoknya. Apalagi dgn harga yg sangat affordable, yg paling di cari sama seluruh pasangan. Definitely will recommend this to my friends, if they need an e-invitation. Thankuuuu Kondangin, udah membantu memberikan undangan simpel, padat, jelas, cantik, elegan, dan teman2ku gaperlu pusing utk join our zoom meeting💕
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className="testimonial-wrap">
-                                                <div className="testimonial-item">
-                                                    <img src="assets/img/testimonials/sonya.jpg" className="testimonial-img" alt />
-                                                    <h3>Sonya & Bintang</h3>
-                                                    <h4>Manager Operasional Shopee</h4>
-                                                    <p>
-                                                        <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                        Sebelumnya gak ada bayangan sama sekali mau buat undangan online dimana. Dan akhirnya direferensikan sama temen dan coba hub adminnya Kondangin. Adminnya fast respond, ramah, sabar, mau menerima masukan dan sabar menerima requestan dari kami. Pilihan designnya juga banyak dan keren2. Sempet bikin kami bingung mau memilih yang mana hehe. Hasilnya bagus, cepet dan kreatif. Astungkara semakin sukses ya Kondangin. Terima kasih atas bantuannya. Rahajeng
-                                                        <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className="testimonial-wrap">
-                                                <div className="testimonial-item">
-                                                    <img src="assets/img/testimonials/aldi.jpg" className="testimonial-img" alt />
-                                                    <h3>Ferdinand & Astriya</h3>
-                                                    <h4>UI/UX Tokopedia</h4>
-                                                    <p>
-                                                        <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                        Servicenya bagus banget, dari awal pembuatan udah banyak yg dirubah tapi prosesnya cepet, bahkan malem-malempun masih revisi undangan masih dibales, padahal lewat Whatsapp aja dengan semua detailpun semuanya di note dengan baik dan semuanya dirubah sesuai request. Memang bagus banget, thank you ya, hanya dalam beberapa hari aja bisa kirim undangan. Sangat mempermudah sekali di masa-masa pandemi begini. Sangat direkomendasi❤️
-                                                        <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className="testimonial-wrap">
-                                                <div className="testimonial-item">
-                                                    <img src="assets/img/testimonials/lara.jpg" className="testimonial-img" alt />
-                                                    <h3>Nanda & Aisyah</h3>
-                                                    <h4>Entrepreneur</h4>
-                                                    <p>
-                                                        <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                        Puas sekali buat undangan online di sini. Desainnya bagus, dilihat dari handphone ataupun laptop tetap bagus dan tidak berantakkan. Opsi fitur yang disediakan pun lengkap sampai ada barcode untuk wedding gift juga. Kakak adminnya juga sabar banget melayani request kami yang bermacam-macam karena kami banyak maunya ahaha, dilayani sampai benar-benar tuntas dan cocok dengan apa yang kami inginkan. Mantap sekali deh pokoknya, sangat memuaskan 😀
-                                                        <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                        </SwiperSlide>
-                                     
-                                    </Swiper> */}
-
-
-                  {/* <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/silver.jpg" className="testimonial-img" alt />
-                                                <h3>Desta & Silvi</h3>
-                                                <h4>Manager Operasional Daihatsu</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Pelayanan ramah, cepat, dan berani saya bilang ini yg terbaik.
-                                                    Sempet bingung waktu milih mau pakai jasa siapa untuk undangan online, dan akhirnya kecantol banget sama desain dan contoh" undangan online dari KONDANGIN.ID ini.
-                                                    Uda siap"in semuanya dari 3 hari sebelum pesen, dan saat apply pun sepertinya itu malam jam 23.00 WITA, ga nyangka dong karena sempat bingung, chat admin, dan jam malam pun masih ngebales whatsapp saya. Apply plus transfer tengah malem, eeh besok paginya kelar dong....ga nyangka, ditinggal tidur doang uda kelar hahaha
-                                                    Dengan segala revisi yang aku bilang pelan", dan ternyata KLOP laah undangannya, suka banget laah pokoknya! TERBAIKKKK
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                               
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/a.jpg" className="testimonial-img" alt />
-                                                <h3>Sara Wilsson</h3>
-                                                <h4>Designer</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Sebelumnya gak ada bayangan sama sekali mau buat undangan online dimana. Dan akhirnya direferensikan sama temen dan coba hub adminnya Kondangin. Adminnya fast respond, ramah, sabar, mau menerima masukan dan sabar menerima requestan dari kami. Pilihan designnya juga banyak dan keren2. Sempet bikin kami bingung mau memilih yang mana hehe. Hasilnya bagus, cepet dan kreatif. Astungkara semakin sukses ya KONDANGIN.ID. Terima kasih atas bantuannya. Rahajeng
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-3.jpg" className="testimonial-img" alt />
-                                                <h3>Jena Karlis</h3>
-                                                <h4>Store Owner</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-4.jpg" className="testimonial-img" alt />
-                                                <h3>Matt Brandon</h3>
-                                                <h4>Freelancer</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="testimonial-wrap">
-                                            <div className="testimonial-item">
-                                                <img src="assets/img/testimonials/testimonials-5.jpg" className="testimonial-img" alt />
-                                                <h3>John Larson</h3>
-                                                <h4>Entrepreneur</h4>
-                                                <p>
-                                                    <i className="bx bxs-quote-alt-left quote-icon-left" />
-                                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                                                    <i className="bx bxs-quote-alt-right quote-icon-right" />
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                </div>
-                <div className="swiper-pagination" />
+                
+                
+                <Carousel autoplay >
+                  {testimonialData.map((testimonial, index) => (
+                    <Card key={index}  style={{boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.2)'}}>
+                      <div>
+                        <Card style={{boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.2)'}}>
+                        <center><img src={testimonial.image} style={{ width: '300px', height: '300px'}} alt={testimonial.name} /></center>
+                        </Card>
+                      </div>
+                      <div style={{marginBottom:'20px', marginTop:'20px'}}>
+                        <center><h3>{testimonial.name}</h3></center>
+                      </div>
+                      <p style={{ wordWrap:'break-word'}}><b>Domain Undangan :</b>&nbsp; {testimonial.domain}</p>
+                      <p><b>Paket :</b>&nbsp; {testimonial.package}</p>
+                      <p> <b> Rating :</b> &nbsp; <span><Rate style={{ fontSize: '20px', }} allowHalf defaultValue={testimonial.rating} disabled /></span></p>
+                      <p><b>Ulasan : </b>&nbsp; {testimonial.review}</p>
+                    </Card>
+                  ))}
+                </Carousel>
+                
               </div>
             </div>
           </section>
-
-
-
-
-
-
-
           {/* End Testimonials Section */}
 
 
@@ -636,7 +483,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/bronze/a.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 1"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//bronzesatu." + window.location.hostname + "/to/Akri"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//bronzesatu." + window.location.hostname + "/to/Akri"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }} >View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -649,7 +496,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/bronze/Bronze2.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//bronzedua." + window.location.hostname + "/to/Sonya"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//bronzedua." + window.location.hostname + "/to/Sonya"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }} >View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -662,7 +509,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/bronze/Bronze3.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 2"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//bronzetiga." + window.location.hostname + "/to/Faishal"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//bronzetiga." + window.location.hostname + "/to/Faishal"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }} >View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -675,7 +522,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/silver/silver1.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 2"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//silversatu." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//silversatu." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }} >View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -688,7 +535,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/silver/silver2.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 2"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//silverdua." + window.location.hostname + "/to/Akri"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//silverdua." + window.location.hostname + "/to/Akri"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }}>View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -701,7 +548,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/silver/silver3.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="App 3"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//silvertiga." + window.location.hostname + "/to/Sonya"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//silvertiga." + window.location.hostname + "/to/Sonya"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }} >View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -714,7 +561,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/gold/gold1.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 1"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//goldsatu." + window.location.hostname + "/to/Faishal"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//goldsatu." + window.location.hostname + "/to/Faishal"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }} >View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -727,7 +574,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/gold/gold2.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 3"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//golddua." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//golddua." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }} >View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -740,7 +587,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/gold/gold3.jpg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//goldtiga." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//goldtiga." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }}>View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -754,7 +601,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/amet/AmetSatu.jpeg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 1"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//amethystsatu." + window.location.hostname + "/to/Sonya"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//amethystsatu." + window.location.hostname + "/to/Sonya"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }}>View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -767,7 +614,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/amet/AmetDua.jpeg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Card 3"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//amethystdua." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//amethystdua." + window.location.hostname + "/to/Dhimas"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }}>View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -780,7 +627,7 @@ const LandingPage = () => {
                       <p>Preview</p>
                       <div className="portfolio-links">
                         <a href="assets/img/amet/AmetTiga.jpeg" data-gallery="portfolioGallery" className="portfolio-lightbox" title="Web 3"><i className="bx bx-plus" /></a>
-                        <a href={window.location.protocol + "//amethysttiga." + window.location.hostname + "/to/Akri"} title="More Details"><button type="button" className="btn btn-primary" >View Template</button></a>
+                        <a href={window.location.protocol + "//amethysttiga." + window.location.hostname + "/to/Akri"} title="More Details"><button type="button" className="btn btn-primary" style={{ backgroundColor: '#516557', border: 'none' }}>View Template</button></a>
                       </div>
                     </div>
                   </div>
@@ -967,7 +814,7 @@ const LandingPage = () => {
                   <div className="box recommended" data-aos="zoom-in-left" data-aos-delay={200}>
                     <h3>Paket Amethyst</h3>
                     <h4><sup style={{ color: 'red' }}><b>Rp.</b></sup><b style={{ textDecorationLine: 'line-through', color: 'red' }}>320.000</b> </h4>
-                    <h4><sup><b>Rp.</b></sup><b>220.000</b></h4>
+                    <h4><sup><b>Rp.</b></sup><b>230.000</b></h4>
                     <ul>
                       <li>Quotes</li>
                       <li>Informasi Acara</li>
@@ -1136,7 +983,7 @@ const LandingPage = () => {
               chatMessage='Selamat datang di Kondangin!
                          Ada yang bisa kami bantu?'
               className='whatsapp-button'
-              
+
 
 
 
@@ -1175,14 +1022,14 @@ const LandingPage = () => {
           </section> */}
 
           <section class="notification" id="fake-notification">
-            <div style={{display:'flex', alignItems:'center'}}>
-              
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+
               <div className='avatar' id='avatar'>
-              <UserAddOutlined style={{fontSize:'40px'}} />
+                <UserAddOutlined style={{ fontSize: '40px' }} />
               </div>
 
               <div class="info">
-                <div style={{marginBottom:'3px'}}>
+                <div style={{ marginBottom: '3px' }}>
                   <b><span id="nama">John Doe</span> from <span id="kota">New York</span></b>
                 </div>
                 <div>
@@ -1190,8 +1037,8 @@ const LandingPage = () => {
                 </div>
                 <div>
                   <small>
-                  <span id="waktu">5</span> &nbsp;
-                  <a className="poweredby" href="https://one-times.com/" target="_blank"><i className="fa fa-check-circle" /> Verified by Provely</a>
+                    <span id="waktu">5</span> &nbsp;
+                    <a className="poweredby" href="https://one-times.com/" target="_blank"><i className="fa fa-check-circle" /> Verified by Provely</a>
                   </small>
                 </div>
               </div>

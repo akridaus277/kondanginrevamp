@@ -1,0 +1,16 @@
+.btn-add-cart{
+    background-color: #516557;
+}
+
+.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover{
+    background-color: #516557;
+}
+
+.ant-btn-primary{
+    background-color: #516557;
+}
+
+.ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover{
+    color: #516557;
+    border-color: #516557;
+}

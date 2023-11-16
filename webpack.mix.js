@@ -11,12 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
+// mix.setPublicPath('public')
+//    .copy('resources/dashboard/src', 'public/dashboard/src')
+//    .version()
+
  mix.js('resources/js/app.js', 'public/js')
  .react()
  .sourceMaps()
  .postCss('resources/css/app.css', 'public/css', [
      //
  ]);
+
 
 
 

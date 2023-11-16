@@ -22,6 +22,14 @@ Route::get('/login', function () {
     return view('Pages.login');
 });
 
+Route::get('/memberArea', function () {
+    return view('Pages.memberArea');
+});
+
+Route::get('/memberArea/shopping', function () {
+    return view('Pages.shopping');
+});
+
 Route::get('/register', function () {
     return view('Pages.register');
 });
