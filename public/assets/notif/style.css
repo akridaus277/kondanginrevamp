@@ -102,6 +102,12 @@
     color: #3498db;
 } */
 
+
+.ant-btn-primary {
+  background-color: #516557;
+}
+
+
   /* Style notifikasi */
   .notification {
     position: fixed;
@@ -160,9 +166,22 @@ font-size: 14px; /* Ukuran font yang lebih kecil untuk perangkat mobile */
 }
 }
 
+
+
 @media screen and (max-width: 387px) {
     /* Menggeser tombol WhatsApp ke belakang notifikasi jika lebar layar kurang dari 387px */
     .whatsapp-button {
         z-index: 0;
     }
 }
+
+/* @media (max-width: 1024px) {
+
+    .images{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    
+} */

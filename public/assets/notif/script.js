@@ -36,15 +36,22 @@ function showNotification() {
 
 function closeNotification() {
   notification.style.display = "none";
+  
 }
 
 function autoShowAndHideNotification() {
-  showNotification();
+  setTimeout(function(){
+    showNotification();
 
-  setTimeout(function () {
-      closeNotification();
-      setTimeout(autoShowAndHideNotification, 30000); // Muncul kembali setelah 30 detik
-  }, 6000); // Tutup setelah 6 detik
+    setTimeout(function () {
+        closeNotification();
+        setTimeout(autoShowAndHideNotification, 30000); // Muncul kembali setelah 30 detik
+    }, 4000); // Tutup setelah 6 detik
+
+  }, 10000)
+
 }
 
 window.onload = autoShowAndHideNotification;
+
+

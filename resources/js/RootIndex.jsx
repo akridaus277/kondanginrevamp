@@ -12,6 +12,8 @@ import VerifEmailSuccess from "./components/Pages/VerifEmailSuccess/VerifEmailSu
 import VerifEmailFailed from "./components/Pages/VerifEmailFailed/VerifEmailFailed.jsx";
 import VerifEmail from "./components/Pages/VerifEmail/VerifEmail.jsx";
 import LandingPage from "./components/Pages/LandingPage/LandingPage.jsx";
+import MemberArea from "./components/Pages/MemberArea/MemberArea.jsx";
+import Shopping from "./components/Pages/MemberArea/Shopping/Shopping.jsx";
 
 
 const RootIndex = () => {
@@ -26,6 +28,8 @@ const RootIndex = () => {
                 <Route path="/landingPage" element={<LandingPage></LandingPage>}></Route>
                 <Route path="/coba" element={<Coba></Coba>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
+                <Route path="/memberArea" element={<MemberArea></MemberArea>}></Route>
+                <Route path="/memberArea/shopping" element={<Shopping></Shopping>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/password/forget" element={<ForgetPassword></ForgetPassword>}></Route>
                 <Route path="/password/reset/(:token)" element={<ResetPassword></ResetPassword>}></Route>
@@ -95,5 +99,15 @@ if (document.getElementById("verifEmail")) {
 
 if (document.getElementById("landingPage")) {
     const root = createRoot(document.getElementById("landingPage"));
+    root.render(<RootIndex></RootIndex>);
+}
+
+if (document.getElementById("memberArea")) {
+    const root = createRoot(document.getElementById("memberArea"));
+    root.render(<RootIndex></RootIndex>);
+}
+
+if (document.getElementById("shopping")) {
+    const root = createRoot(document.getElementById("shopping"));
     root.render(<RootIndex></RootIndex>);
 }
