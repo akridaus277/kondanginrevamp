@@ -1,24 +1,58 @@
 import React, { useEffect, useState } from 'react'
 
-import { Button, Card, ConfigProvider, Divider, Form, Input } from 'antd'
-import { onFinish } from './ResetPassword.js'
+import { Button, Card, ConfigProvider, Divider, Form, Input, message } from 'antd'
+import { handleRedirect, onFinish, postPasswordReset } from './ResetPassword.js'
 import { LockOutlined } from '@ant-design/icons'
 import './ResetPassword.css'
 import {handleNewPasswordChangeON } from './ResetPassword.js'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 const ResetPassword = () => {
-    const [form] = Form.useForm();
 
+    const state = useSelector((state) => state)
+    const queryParameters = new URLSearchParams(window.location.search);
+    const pathWithoutKey = window.location.pathname?.split('/').pop();
+    const token = pathWithoutKey  || '';
+    const email = queryParameters.get("email")
+    const [isKlikLogin, setIsKlikLogin] = useState(false)
     const [isKonfirmasiPasswordDisabled, setIsKonfirmasiPasswordDisabled] = useState(true);
+    const [password, setPassword] = useState()
+    const [passwordConfirmation, setPasswordConfirmation] = useState()
+    const [form] = Form.useForm();
+    const dispatch = useDispatch()
 
+
+    useEffect(() => {
+        if (isKlikLogin) {
+            postPasswordReset()
+        }
+    }, [])
+
+
+
+    const handleSubmit = () => {
+        postPasswordReset(dispatch,{
+            "token" : token,
+            "email" : email,
+            "password" : password,
+            "password_confirmation": passwordConfirmation
+        })
+        setIsKlikLogin(true)
+    }
+
+    handleRedirect(state.responseResetPassword.status)
     
     const handleNewPasswordChange = (e) => {
         const newPasswordValue = e.target.value;
         setIsKonfirmasiPasswordDisabled(handleNewPasswordChangeON(newPasswordValue));
+        setPassword(newPasswordValue)
     };
 
     return (
+        <>
+        <div id="my-message"></div>
         <div className="reset-password-password-container">
             <Card className="reset-password-password-card">
                 <h2 className="reset-password-password-card-title">Reset Password</h2>
@@ -28,7 +62,7 @@ const ResetPassword = () => {
                 >
                     <div className="reset-password-password-logo logo-animation">
                         <img
-                            src="../images/icons/kondangin.png"
+                            src="../../images/icons/kondangin.png"
                             height={"128px"}
                             width={"128px"}
                             alt="Logo"
@@ -57,7 +91,7 @@ const ResetPassword = () => {
                         form={form}
                         name="reset-password-password"
                         initialValues={{ remember: true }}
-                        onFinish={onFinish}
+                        onFinish={handleSubmit}
                         
                     >
                         <Form.Item
@@ -109,6 +143,7 @@ const ResetPassword = () => {
                                 prefix={<LockOutlined />}
                                 placeholder="Confirm Password"
                                 disabled={isKonfirmasiPasswordDisabled}
+                                onChange={e => setPasswordConfirmation(e.target.value)}
                             />
                         </Form.Item>
 
@@ -156,6 +191,7 @@ const ResetPassword = () => {
                 </ConfigProvider>
             </Card>
         </div>
+        </>
     )
 }
 

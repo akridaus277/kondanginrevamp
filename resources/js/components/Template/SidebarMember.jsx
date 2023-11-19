@@ -13,7 +13,7 @@ const SidebarMember = () => {
           <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="index.html" aria-expanded="false"><i data-feather="home" className="feather-icon" /><span className="hide-menu">Dashboard</span></a></li>
           <li className="list-divider" />
           <li className="nav-small-cap"><span className="hide-menu">Features</span></li>
-          <li className="sidebar-item"> <Link to={"/memberArea/shopping"} > <a className="sidebar-link"  aria-expanded="false"><i data-feather="tag" className="feather-icon" /><span className="hide-menu">Shopping
+          <li className="sidebar-item"> <Link to={"/memberArea/shopping"} reloadDocument> <a className="sidebar-link"  aria-expanded="false"><i data-feather="tag" className="feather-icon" /><span className="hide-menu">Shopping
               </span></a></Link>
           </li>
           <li className="sidebar-item"> <a className="sidebar-link sidebar-link" href="app-chat.html" aria-expanded="false"><i data-feather="message-square" className="feather-icon" /><span className="hide-menu">Invitation</span></a></li>

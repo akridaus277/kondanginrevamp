@@ -1,10 +1,26 @@
-import {  CloseCircleTwoTone } from '@ant-design/icons'
-import { Card, ConfigProvider } from 'antd'
-import React from 'react'
+import {  CloseCircleTwoTone, ExclamationCircleOutlined } from '@ant-design/icons'
+import { Card, ConfigProvider, Modal } from 'antd'
+import React, { useEffect } from 'react'
 import './VerifEmailFailed.css'
 
 const VerifEmailFailed = () => {
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            // window.location.replace('../verifEmail');
+            Modal.confirm({
+                title: 'Confirm',
+                icon: <ExclamationCircleOutlined />,
+                content: 'Check your email. Make sure you receive the latest verification email from "KONDANGIN.ORG"',
+                okText: 'Already',
+                cancelText: 'Not yet',
+              });
+        }, 2000);
+    },[])
   return (
+    <>
+    <div id="my-message"></div>
     <div className="verif-email-failed-container">
     <Card className="verif-email-failed-card">
     <h2 className="verif-email-failed-card-title">Email Verification Failed</h2>
@@ -47,6 +63,7 @@ const VerifEmailFailed = () => {
         </ConfigProvider>
     </Card>
 </div>
+</>
   )
 }
 

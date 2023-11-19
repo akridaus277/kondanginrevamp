@@ -1,13 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Form, Input, Button, Checkbox, ConfigProvider, Space, Flex, Divider } from "antd";
 import { MailOutlined } from "@ant-design/icons";
-import { onFinish } from './ForgetPassword.js';
+import { onFinish, postForgotPassword } from './ForgetPassword.js';
 import "../FogetPassword/ForgetPassword.css"
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const ForgetPassword = () => {
+
+    const state = useSelector((state) => state)
+    const [email, setEmail] = useState()
+    const [isKlikLogin, setIsKlikLogin] = useState(false)
+    const dispatch = useDispatch()
+
+
+    // useEffect(() => {
+    //     if (isKlikLogin) {
+    //         postForgotPassword()
+    //     }
+    // }, [])
+
+    const handleSubmit = () => {
+        postForgotPassword(dispatch,{
+            "email": email,
+
+        })
+
+        // setIsKlikLogin(true)
+    }
+
+ 
+
+    
+
     return (
+        <>
+        <div id="my-message"></div>
         <div className="forget-password-container">
             <Card className="forget-password-card">
                 <h2 className="forget-password-card-title">Forgot Password</h2>
@@ -45,7 +74,7 @@ const ForgetPassword = () => {
                     <Form
                         name="forget-password"
                         initialValues={{ remember: true }}
-                        onFinish={onFinish}
+                        onFinish={handleSubmit}
                     >
                         <Form.Item
                             name="email"
@@ -63,6 +92,7 @@ const ForgetPassword = () => {
                             <Input
                                 prefix={<MailOutlined />}
                                 placeholder="Email"
+                                onChange={e => setEmail(e.target.value)}
                             />
                         </Form.Item>
 
@@ -88,7 +118,7 @@ const ForgetPassword = () => {
                                 <Link to={"/login"} className='forget-password-form-button'>
                                     <Button
                                         type="primary"
-                                        htmlType="submit"
+                                        // htmlType="submit"
                                         className="forget-password-form-button"
                                         style={{ background: "#516557", height: 'auto' }}
                                     // size="large"
@@ -109,6 +139,8 @@ const ForgetPassword = () => {
                 </ConfigProvider>
             </Card>
         </div>
+
+        </>
     )
 }
 

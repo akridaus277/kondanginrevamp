@@ -1,4 +1,5 @@
 import { message } from "antd";
+import { registerUser } from "../../../store/action.jsx";
 
 
 export const success = () => {
@@ -36,3 +37,33 @@ export const validateNoWa = (rule, value, callback) => {
         callback(); // Validasi berhasil
     }
 };
+
+
+export const handleRegisteredirect = (responseStatus) => {
+    console.log("jalan red");
+       
+    if (responseStatus === 200) {
+        window.location.replace('../verifEmail');
+    }
+}
+
+
+export const postRegister = (dispatch, body) => {
+   
+     dispatch(registerUser(body))
+}
+
+export const ErrorRegister = (dataError, status) => {
+    if (status === 400) {
+
+        message.config({
+            getContainer: () => document.getElementById('my-message'), // Specify the target container
+    
+        })
+        message.open({
+            type: "error",
+            duration:3,
+            content: dataError,
+        });
+    }
+}

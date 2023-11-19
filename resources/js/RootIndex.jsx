@@ -14,6 +14,8 @@ import VerifEmail from "./components/Pages/VerifEmail/VerifEmail.jsx";
 import LandingPage from "./components/Pages/LandingPage/LandingPage.jsx";
 import MemberArea from "./components/Pages/MemberArea/MemberArea.jsx";
 import Shopping from "./components/Pages/MemberArea/Shopping/Shopping.jsx";
+import { Provider } from "react-redux";
+import store from "./store/index.jsx";
 
 
 const RootIndex = () => {
@@ -22,7 +24,7 @@ const RootIndex = () => {
 
     return (
         <BrowserRouter>
-
+           <Provider store={store}>
             <Routes>
                 <Route path="/" element={<Register></Register>}></Route>
                 <Route path="/landingPage" element={<LandingPage></LandingPage>}></Route>
@@ -32,7 +34,7 @@ const RootIndex = () => {
                 <Route path="/memberArea/shopping" element={<Shopping></Shopping>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/password/forget" element={<ForgetPassword></ForgetPassword>}></Route>
-                <Route path="/password/reset/(:token)" element={<ResetPassword></ResetPassword>}></Route>
+                <Route path="/password/reset/:token" element={<ResetPassword></ResetPassword>}></Route>
                 <Route path="/verifEmail" element={<VerifEmail></VerifEmail>}></Route>
                 <Route path="/verifEmailSuccess" element={<VerifEmailSuccess></VerifEmailSuccess>}></Route>
                 <Route path="/verifEmailFailed" element={<VerifEmailFailed></VerifEmailFailed>}></Route>
@@ -41,6 +43,7 @@ const RootIndex = () => {
                     element={<KoneksiTerputus></KoneksiTerputus>}
                 ></Route>
             </Routes>
+            </Provider>
         </BrowserRouter>
     );
 };

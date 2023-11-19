@@ -1,11 +1,27 @@
-import { Button, Card, ConfigProvider, Result } from 'antd'
-import React from 'react'
+import { Button, Card, ConfigProvider, Result, message } from 'antd'
+import React, { useEffect } from 'react'
 import './VerifEmailSuccess.css'
 import { CheckCircleFilled, CheckCircleOutlined, CheckCircleTwoTone } from '@ant-design/icons'
 
 
 const VerifEmailSuccess = () => {
+    useEffect(() =>{
+        message.config({
+            getContainer: () => document.getElementById('my-message'), // Specify the target container
+    
+        })
+        message.open({
+            type:'success',
+            content:'You will be redirected to the login page in 3 seconds',
+            duration: 3
+        })
+        setTimeout(() => {
+            window.location.replace('../login');
+        }, 3000);
+    }, [])
     return (
+        <>
+        <div id="my-message"></div>
         <div className="verif-email-container">
             <Card className="verif-email-card">
             <h2 className="verif-email-card-title">Welcome to Kondangin.org</h2>
@@ -47,6 +63,7 @@ const VerifEmailSuccess = () => {
                 </ConfigProvider>
             </Card>
         </div>
+        </>
     )
 }
 

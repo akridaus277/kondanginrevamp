@@ -18,7 +18,7 @@
             /* height: 100vh; */
             /* margin: 0; */
             /* Menambahkan gambar latar belakang yang menyesuaikan layar */
-            background: url('../images/icons/tirai.jpg') center/cover no-repeat;
+            background: url('../../images/icons/tirai.jpg') center/cover no-repeat;
             backdrop-filter: blur(3px);
 
         }
