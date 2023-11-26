@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+use Stancl\Tenancy\Middleware\InitializeTenancyByPath;
 use Illuminate\Http\Request;
 use App\Http\Controllers\TenantUserController;
 
@@ -21,32 +22,43 @@ use App\Http\Controllers\TenantUserController;
 */
 
 // web routes
-Route::middleware([
-    'web',
-    InitializeTenancyBySubdomain::class,
-    PreventAccessFromCentralDomains::class,
-])->group(function () {
-    Route::get('/', function () {
+// Route::middleware([
+//     'web',
+//     InitializeTenancyBySubdomain::class,
+//     PreventAccessFromCentralDomains::class,
+// ])->group(function () {
+//     Route::get('/', function () {
+//         return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+//     });
+// });
+
+Route::group([
+    'prefix' => '/{tenant}',
+    'middleware' => ['web',InitializeTenancyByPath::class],
+], function () {
+    Route::get('/', function() {
         return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
     });
 });
 
 // api routes
-Route::middleware([
-    'api',
-    InitializeTenancyBySubdomain::class,
-    PreventAccessFromCentralDomains::class,
-])->group(function ($router) {
-    /* Route::get('api/to/{nama_tamu}', function ($nama_tamu) {
-        $controller = new TenantController();
-        return $controller->show(tenant(), $nama_tamu);
-    }); */
+// Route::middleware([
+//     'api',
+//     InitializeTenancyBySubdomain::class,
+//     PreventAccessFromCentralDomains::class,
+// ])->group(function ($router) {
+//     Route::get('api/user', function (Request $request) {
+//         $controller = new TenantUserController();
+//         return $controller->tenantUserInfo(tenant(), $request);
+//     })->middleware('auth:sanctum');
+// });
+
+Route::group([
+    'prefix' => '/{tenant}',
+    'middleware' => ['api','cors',InitializeTenancyByPath::class],
+], function () {
     Route::get('api/user', function (Request $request) {
         $controller = new TenantUserController();
         return $controller->tenantUserInfo(tenant(), $request);
     })->middleware('auth:sanctum');
-
-
-
 });
-

@@ -21,7 +21,8 @@ return [
         '127.0.0.1',
         'localhost',
         'kondangin.org',
-        'snapind.com'
+        'snapind.com',
+        'apikondangin.snapind.com'
     ],
 
     /**

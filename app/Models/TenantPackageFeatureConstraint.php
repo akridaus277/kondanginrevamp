@@ -33,7 +33,7 @@ class TenantPackageFeatureConstraint extends Model
     {
         $featureConstraints = collect();
         $tenantPackageFeatureConstraintResults = TenantPackageFeatureConstraint::where('tenant_package_id',$tenantPackage->id)->get();
-        echo($tenantPackage->id);
+        // echo($tenantPackage->id);
         foreach ($tenantPackageFeatureConstraintResults as $tenantPackageFeatureConstraintResult) {
             $feature = TenantFeature::where('id',$tenantPackageFeatureConstraintResult->tenant_feature_id)->first();
             $constraint = $tenantPackageFeatureConstraintResult->max_entity;

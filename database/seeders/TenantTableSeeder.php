@@ -31,7 +31,7 @@ class TenantTableSeeder extends Seeder
             'tenant_package_id' => $tenantPackageCompanyEventAmethyst->id,
             'tenant_theme_id' => $tenantThemeCompanyEventAmethyst1->id
         ]);
-        $tenant1->domains()->create(['domain' => 'outingdisco']);
+        // $tenant1->domains()->create(['domain' => 'outingdisco']);
         $tenant2 = Tenant::create([
             'id' => 'tirtaamanda',
             'active' => true,
@@ -39,7 +39,7 @@ class TenantTableSeeder extends Seeder
             'tenant_package_id' => $tenantPackageWeddingAmethyst->id,
             'tenant_theme_id' => $tenantThemeWeddingAmethyst1->id
         ]);
-        $tenant2->domains()->create(['domain' => 'tirtaamanda']);
+        // $tenant2->domains()->create(['domain' => 'tirtaamanda']);
         //
     }
 }

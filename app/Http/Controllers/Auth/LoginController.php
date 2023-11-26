@@ -44,7 +44,7 @@ class LoginController extends Controller
                 return response()->apiError(['email' => 'Email anda belum terverifikasi, silahkan verifikasi email anda terlebih dahulu.'], 403);
             }
 
-            $token = $user->createToken(env("APP_NAME"))->plainTextToken;
+            $token = $user->createToken("Kondangin")->plainTextToken;
             return response()->api(["token" => $token], 200);
         }
 
