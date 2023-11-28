@@ -15,6 +15,7 @@ class TenantUserController extends Controller
         // $userDTO = $user->domainRoles;
 
         return response()->api($tenantUserDTO,200);
+        // return response()->api("Yuhuu",200);
     }
     //
 }

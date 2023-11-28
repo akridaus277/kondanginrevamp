@@ -32,11 +32,21 @@ use App\Http\Controllers\TenantUserController;
 //     });
 // });
 
-Route::group([
-    'prefix' => '/{tenant}',
-    'middleware' => ['web',InitializeTenancyByPath::class],
-], function () {
-    Route::get('/', function() {
+// Route::group([
+//     'prefix' => '/{tenant}',
+//     'middleware' => ['web',InitializeTenancyByPath::class],
+// ], function () {
+//     Route::get('/', function() {
+//         return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+//     });
+// });
+
+Route::middleware([
+    'api',
+    InitializeTenancyByPath::class,
+    PreventAccessFromCentralDomains::class
+])->group(function () {
+    Route::get('{tenant}/', function () {
         return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
     });
 });
@@ -53,11 +63,21 @@ Route::group([
 //     })->middleware('auth:sanctum');
 // });
 
-Route::group([
-    'prefix' => '/{tenant}',
-    'middleware' => ['api','cors',InitializeTenancyByPath::class],
-], function () {
-    Route::get('api/user', function (Request $request) {
+// Route::group([
+//     'prefix' => '/{tenant}',
+//     'middleware' => ['api',InitializeTenancyByPath::class],
+// ], function () {
+//     Route::get('api/user', function (Request $request) {
+//         $controller = new TenantUserController();
+//         return $controller->tenantUserInfo(tenant(), $request);
+//     })->middleware('auth:sanctum');
+// });
+
+Route::middleware([
+    'api',
+    InitializeTenancyByPath::class,
+])->group(function ($router) {
+    Route::get('{tenant}/api/user', function (Request $request) {
         $controller = new TenantUserController();
         return $controller->tenantUserInfo(tenant(), $request);
     })->middleware('auth:sanctum');
