@@ -43,9 +43,9 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {
-            return response()->apiError("Anda tidak terautentikasi, silahkan lakukan login terlebih dahulu.", 401);
+            return response()->apiError("You are not authenticated. Please log in first.", 401);
         }
 
-        return response()->api("Logout berhasil.", 200);
+        return response()->api("Logout successful.", 200);
     }
 }

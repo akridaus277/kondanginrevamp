@@ -23,66 +23,66 @@ class UsersTableSeeder extends Seeder
             'name' => "Akri",
             'email' => "akri@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
-            'no_hp' => '089679048560',
-            'alamat' => 'Klangenan',
-            'kecamatan' => 'Klangenan',
-            'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat',
+            'phone' => '089679048560',
+            'address' => 'Klangenan',
+            'district' => 'Klangenan',
+            'city' => 'Cirebon',
+            'province' => 'Jawa Barat',
             'email_verified_at' => now()
         ]);
         User::create([
             'name' => "Dhimas",
             'email' => "dhimas@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
-            'no_hp' => '089679048560',
-            'alamat' => 'Klangenan',
-            'kecamatan' => 'Klangenan',
-            'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat',
+            'phone' => '089679048560',
+            'address' => 'Klangenan',
+            'district' => 'Klangenan',
+            'city' => 'Cirebon',
+            'province' => 'Jawa Barat',
             'email_verified_at' => now()
         ]);
         User::create([
             'name' => "Hawa Undangan",
             'email' => "hawa@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
-            'no_hp' => '089679048560',
-            'alamat' => 'Klangenan',
-            'kecamatan' => 'Klangenan',
-            'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat',
+            'phone' => '089679048560',
+            'address' => 'Klangenan',
+            'district' => 'Klangenan',
+            'city' => 'Cirebon',
+            'province' => 'Jawa Barat',
             'email_verified_at' => now()
         ]);
         User::create([
             'name' => "Nanda",
             'email' => "nanda@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
-            'no_hp' => '089679048560',
-            'alamat' => 'Klangenan',
-            'kecamatan' => 'Klangenan',
-            'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat',
+            'phone' => '089679048560',
+            'address' => 'Klangenan',
+            'district' => 'Klangenan',
+            'city' => 'Cirebon',
+            'province' => 'Jawa Barat',
             'email_verified_at' => now()
         ]);
         User::create([
             'name' => "Dr. Tirta",
             'email' => "tirta@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
-            'no_hp' => '089679048560',
-            'alamat' => 'Klangenan',
-            'kecamatan' => 'Klangenan',
-            'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat',
+            'phone' => '089679048560',
+            'address' => 'Klangenan',
+            'district' => 'Klangenan',
+            'city' => 'Cirebon',
+            'province' => 'Jawa Barat',
             'email_verified_at' => now()
         ]);
         User::create([
             'name' => "Faishal",
             'email' => "faishal@kondangin.org",
             'password' => Hash::make('Kondangin1!'), // You can set a default password here
-            'no_hp' => '089679048560',
-            'alamat' => 'Klangenan',
-            'kecamatan' => 'Klangenan',
-            'kota' => 'Cirebon',
-            'provinsi' => 'Jawa Barat',
+            'phone' => '089679048560',
+            'address' => 'Klangenan',
+            'district' => 'Klangenan',
+            'city' => 'Cirebon',
+            'province' => 'Jawa Barat',
             'email_verified_at' => now()
         ]);
         //

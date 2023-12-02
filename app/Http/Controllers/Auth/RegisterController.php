@@ -22,29 +22,28 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-            'no_hp'=> 'required|string|min:9|unique:users',
-            'alamat' => 'required|string|min:6',
-            'kecamatan' => 'required|string',
-            'kota' => 'required|string',
-            'provinsi' => 'required|string',
-
+            'phone' => 'required|string|min:9|unique:users',
+            'address' => 'required|string|min:6',
+            'district' => 'required|string',
+            'city' => 'required|string',
+            'province' => 'required|string',
         ], [
-            'name.required' => 'Nama wajib diisi.',
-            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
-            'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Silahkan masukkan alamat email yang valid.',
-            'email.max' => 'Email tidak boleh lebih dari 255 karakter.',
-            'email.unique' => 'Email sudah terdaftar.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min' => 'Panjang password minimal 6 karakter.',
-            'no_hp.required' => 'Nama wajib diisi.',
-            'no_hp.min' => 'Panjang Nomor HP minimal 9 karakter.',
-            'no_hp.unique' => 'Nomor HP sudah terdaftar.',
-            'alamat.required' => 'Alamat wajib diisi.',
-            'alamat.min' => 'Panjang Alamat minimal 6 karakter.',
-            'kecamatan.required' => 'Kecamatan wajib diisi.',
-            'kota.required' => 'Kota wajib diisi.',
-            'provinsi.required' => 'Provinsi wajib diisi.',
+            'name.required' => 'Name is required.',
+            'name.max' => 'Name must not be greater than 255 characters.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.max' => 'Email must not be greater than 255 characters.',
+            'email.unique' => 'Email is already registered.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 6 characters long.',
+            'phone.required' => 'Phone number is required.',
+            'phone.min' => 'Phone number must be at least 9 characters long.',
+            'phone.unique' => 'Phone number is already registered.',
+            'address.required' => 'Address is required.',
+            'address.min' => 'Address must be at least 6 characters long.',
+            'district.required' => 'District is required.',
+            'city.required' => 'City is required.',
+            'province.required' => 'Province is required.',
         ]);
 
         if ($validator->fails()) {
@@ -55,11 +54,11 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
-            'kecamatan' => $request->kecamatan,
-            'kota' => $request->kota,
-            'provinsi' => $request->provinsi,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'district' => $request->district,
+            'city' => $request->city,
+            'province' => $request->province,
         ]);
         // $user->sendEmailVerificationNotification();
         $emailVerification = new EmailVerification(['token' => Str::random(64)]);
@@ -91,7 +90,7 @@ class RegisterController extends Controller
         $user->save();
         $emailVerification->delete();
         // return redirect()->to('/verifEmailSuccess');
-        return redirect()->api('Your email has been successfully verified',200);
+        return response()->api('Your email has been successfully verified',200);
 
     }
 
@@ -100,9 +99,9 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255',
         ], [
-            'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Silahkan masukkan alamat email yang valid.',
-            'email.max' => 'Email tidak boleh lebih dari 255 karakter.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.max' => 'Email must not be greater than 255 characters.',
         ]);
 
         if ($validator->fails()) {
@@ -110,13 +109,13 @@ class RegisterController extends Controller
         }
         $user = User::where(['email' => $request->email])->first();
         if (!$user) {
-            return response()->apiError("User tidak ditemukan",404);
+            return response()->apiError("User not found",404);
         }
         if (!$user->hasVerifiedEmail()) {
-            return response()->apiError("Akun anda belum terverifikasi", 403);
+            return response()->apiError("Your account has not been verified", 403);
         }
 
-        return response()->api("Akun anda berhasil terverifikasi", 200);
+        return response()->api("Your account has been successfully verified", 200);
 
     }
 

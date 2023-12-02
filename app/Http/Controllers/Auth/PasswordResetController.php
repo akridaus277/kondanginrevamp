@@ -20,8 +20,8 @@ class PasswordResetController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
         ], [
-            'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Silahkan masukkan alamat email yang valid.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please enter a valid email address.',
         ]);
 
         if ($validator->fails()) {
@@ -32,7 +32,7 @@ class PasswordResetController extends Controller
         $existingUser = User::where('email', $request->email)->first();
         if (!$existingUser) {
             // If the user is not registered, you can register them here
-            return response()->apiError("User tidak ditemukan", 404);
+            return response()->apiError("User not found", 404);
         }
 
 
@@ -41,8 +41,9 @@ class PasswordResetController extends Controller
             );
 
             return $status === Password::RESET_LINK_SENT
-                ? response()->api('Link pengaturan ulang kata sandi berhasil terkirim ke email anda.', 200)
-                : response()->apiError('Gagal mengirim link pengaturan ulang kata sandi.', 500);
+                ? response()->api('Password reset link sent successfully to your email.', 200)
+                : response()->apiError('Failed to send password reset link.', 500);
+
 
 
     }
@@ -55,12 +56,12 @@ class PasswordResetController extends Controller
             'token' => 'required',
             'password' => 'required|min:6|confirmed',
         ], [
-            'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Silahkan masukkan alamat email yang valid.',
-            'token.required' => 'Token wajib diisi.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min' => 'Password harus terdiri dari setidaknya 6 karakter.',
-            'password.confirmed' => 'Konfirmasi Password tidak cocok.'
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'token.required' => 'Token is required.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 6 characters.',
+            'password.confirmed' => 'Password confirmation does not match.'
         ]);
 
         if ($validator->fails()) {
@@ -71,7 +72,7 @@ class PasswordResetController extends Controller
         $existingUser = User::where('email', $request->email)->first();
         if (!$existingUser) {
             // If the user is not registered, you can register them here
-            return response()->apiError("User tidak ditemukan", 404);
+            return response()->apiError("User not found", 404);
         }
         // Retrieve the token record
         $tokenRecord = DB::table('password_resets')
@@ -80,7 +81,7 @@ class PasswordResetController extends Controller
 
         // Check if the token record exists and if it's expired
         if (!$tokenRecord || !Password::broker()->tokenExists($existingUser, $request->token) || Carbon::parse($tokenRecord->created_at)->addMinutes(config('auth.passwords.users.expire')) < Carbon::now()) {
-            return response()->apiError("Token reset password tidak valid atau sudah kedaluwarsa.", 400);
+            return response()->apiError("Invalid or expired reset password token.", 400);
         }
         /* if (!(Password::broker()->tokenExists($existingUser, $request->token) && !Password::tokenExpired($request->token))) {
             return response()->apiError("Token reset password tidak valid.", 400);
@@ -97,7 +98,8 @@ class PasswordResetController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-            ? response()->api('Password berhasil diatur ulang.', 200)
-            : response()->api('Gagal mengatur ulang password.', 400);
+            ? response()->api('Password successfully reset.', 200)
+            : response()->apiError('Failed to reset password.', 400);
+
     }
 }

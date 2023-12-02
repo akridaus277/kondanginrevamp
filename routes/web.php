@@ -39,9 +39,9 @@ Route::get('/password/forget', function () {
     return view('Pages.forgetPassword');
 });
 
-// Route::get('/password/reset/{token}', function () {
-//     return view('Pages.resetPassword');
-// })->name('password.reset');
+Route::get('/password/reset/{token}', function () {
+    return view('Pages.resetPassword');
+})->name('password.reset');
 
 Route::get('/verifEmail', function () {
     return view('Pages.verifEmail');

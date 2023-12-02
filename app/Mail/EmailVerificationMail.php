@@ -39,7 +39,7 @@ class EmailVerificationMail extends Mailable
         return $this->subject('Subject of the email')
                     ->view('emails.emailVerification')
                     ->with([
-                        'verificationLink' => env('APP_URL').'/email/verify/'.$this->userId.'/'.$this->token,
+                        'verificationLink' => env('REACT_APP_URL').'/email/verify/'.$this->userId.'/'.$this->token,
                         'name' => $this->name
                     ]);
     }
