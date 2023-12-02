@@ -25,6 +25,7 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'userInfo']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/email/verify/wait', [RegisterController::class, 'verifyWait']);
+Route::get('/email/verify/{id}/{token}', [RegisterController::class, 'verify']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/login-google', [LoginController::class, 'loginGoogle']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');

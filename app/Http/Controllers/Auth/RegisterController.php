@@ -75,18 +75,23 @@ class RegisterController extends Controller
     // Handle the email verification.
     public function verify($id, $token)
     {
-        $emailVerification = EmailVerification::where(['user_id' => $id, 'token' => $token])->first();
-        if (!$emailVerification) {
-            return redirect()->to('/verifEmailFailed');
-        }
         $user = User::where(['id' => $id])->first();
         if (!$user) {
-            return redirect()->to('/verifEmailFailed');
+            /* return redirect()->to('/verifEmailFailed'); */
+            return response()->apiError("User not found", 404);
         }
+
+        $emailVerification = EmailVerification::where(['user_id' => $id, 'token' => $token])->first();
+        if (!$emailVerification) {
+            // return redirect()->to('/verifEmailFailed');
+            return response()->apiError("Token is not valid", 403);
+        }
+
         $user->email_verified_at = now();
         $user->save();
         $emailVerification->delete();
-        return redirect()->to('/verifEmailSuccess');
+        // return redirect()->to('/verifEmailSuccess');
+        return redirect()->api('Your email has been successfully verified',200);
 
     }
 

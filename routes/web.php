@@ -77,5 +77,5 @@ Route::get('/offline', function () {
     return view('offlinePage');
 
 });
-Route::get('/email/verify/{id}/{token}', [RegisterController::class, 'verify']);
+// Route::get('/email/verify/{id}/{token}', [RegisterController::class, 'verify']);
 
