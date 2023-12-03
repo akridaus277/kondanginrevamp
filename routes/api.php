@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,11 @@ use App\Http\Controllers\UserController;
 Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'userInfo']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/email/verify/wait', [RegisterController::class, 'verifyWait']);
-Route::get('/email/verify/{id}/{token}', [RegisterController::class, 'verify']);
+Route::post('/email/verify/{id}/{token}', [RegisterController::class, 'verify']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/login-google', [LoginController::class, 'loginGoogle']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
 Route::post('/password/email', [PasswordResetController::class, 'sendResetLinkEmail']);
 Route::post('/password/reset', [PasswordResetController::class, 'reset']);
+Route::post('/test/env', [TestController::class, 'getEnv']);
 

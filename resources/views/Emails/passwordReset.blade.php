@@ -89,7 +89,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Welcome To Kondangin!</h1> <img src="{{ asset('images/icons/kondangin.png') }}" width="250" height="240" style="display: block; border: 0px;" />
+                            <h1 style="font-size: 48px; font-weight: 400; margin: 2;">Reset Your Password</h1> <img src="{{ asset('images/icons/kondangin.png') }}" width="250" height="240" style="display: block; border: 0px;" />
                         </td>
                     </tr>
                 </table>
@@ -101,12 +101,12 @@
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                             <p style="margin: 0;">Hello, {{ $name }}.</p><br>
-                            <p style="margin: 0;">Thank you for joining us. We are thrilled to have you as part of our community. You're just one step away from a complete experience with us.</p>
+                            <p style="margin: 0;">We received a request to reset your password. If you didn't make this request, you can ignore this email.</p>
                         </td>
                     </tr>
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Verify your account by clicking this button :</p>
+                            <p style="margin: 0;">Click this button to reset your password :</p>
                         </td>
                     </tr>
                     <tr>
@@ -116,7 +116,7 @@
                                     <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 3px;" bgcolor="#516557"><a href="{{ $verificationLink }}" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #516557; display: inline-block;">Verify Account</a></td>
+                                                <td align="center" style="border-radius: 3px;" bgcolor="#516557"><a href="{{ $passwordResetLink }}" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #516557; display: inline-block;">Reset Password</a></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -131,7 +131,7 @@
                     </tr> <!-- COPY -->
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;"><a href="{{ $verificationLink }}" style="color: #516557; word-break: break-all;">{{ $verificationLink }}</a></p>
+                            <p style="margin: 0;"><a href="{{ $passwordResetLink }}" style="color: #516557; word-break: break-all;">{{ $passwordResetLink }}</a></p>
                         </td>
                     </tr>
                     <tr>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\PasswordResetMail;
+use App\Models\EmailVerification;
+use App\Models\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +14,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class PasswordResetController extends Controller
 {
@@ -35,16 +40,21 @@ class PasswordResetController extends Controller
             return response()->apiError("User not found", 404);
         }
 
+        $passwordReset = PasswordReset::where('email', $existingUser->email)->first();
+        if (!$passwordReset) {
+            $passwordReset = new PasswordReset(['token' => Str::random(64), 'email' => $existingUser->email]);
+        }else{
+            $passwordReset->token = Str::random(64);
+        }
 
-            $status = Password::sendResetLink(
-                $request->only('email')
-            );
+        $passwordReset->save();
+        Mail::to($existingUser->email)->send(new PasswordResetMail($existingUser->name,$passwordReset->token,$existingUser->email));
 
-            return $status === Password::RESET_LINK_SENT
-                ? response()->api('Password reset link sent successfully to your email.', 200)
-                : response()->apiError('Failed to send password reset link.', 500);
+        if (count(Mail::failures()) > 0) {
+            response()->apiError('Failed to send password reset link.', 500);
+        }
 
-
+        return response()->api('Password reset link sent successfully to your email.', 200);
 
     }
 
@@ -75,31 +85,24 @@ class PasswordResetController extends Controller
             return response()->apiError("User not found", 404);
         }
         // Retrieve the token record
-        $tokenRecord = DB::table('password_resets')
-        ->where('email', $request->email)
-        ->first();
+        $tokenRecord = PasswordReset::where('email', $request->email)->first();
 
         // Check if the token record exists and if it's expired
-        if (!$tokenRecord || !Password::broker()->tokenExists($existingUser, $request->token) || Carbon::parse($tokenRecord->created_at)->addMinutes(config('auth.passwords.users.expire')) < Carbon::now()) {
+        if (!$tokenRecord || Carbon::parse($tokenRecord->updated_at)->addMinutes(config('auth.passwords.users.expire')) < Carbon::now()) {
             return response()->apiError("Invalid or expired reset password token.", 400);
         }
-        /* if (!(Password::broker()->tokenExists($existingUser, $request->token) && !Password::tokenExpired($request->token))) {
-            return response()->apiError("Token reset password tidak valid.", 400);
-        } */
 
+        if ($tokenRecord && $tokenRecord->token != $request->token) {
+            return response()->apiError("Invalid or expired reset password token.", 400);
+        }
 
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password),
-                ])->save();
-            }
-        );
+        $existingUser->forceFill([
+            'password' => Hash::make($request->password),
+        ])->save();
+        $tokenRecord->delete();
 
-        return $status === Password::PASSWORD_RESET
-            ? response()->api('Password successfully reset.', 200)
-            : response()->apiError('Failed to reset password.', 400);
+        return response()->api('Password successfully reset.', 200);
+
 
     }
 }

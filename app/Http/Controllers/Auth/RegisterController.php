@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailVerificationMail;
-
+use App\Models\DomainAccessConfiguration;
+use App\Models\DomainFeature;
+use App\Models\DomainFeaturePermission;
+use App\Models\DomainPermission;
+use App\Models\DomainRole;
 
 class RegisterController extends Controller
 {
@@ -60,6 +64,29 @@ class RegisterController extends Controller
             'city' => $request->city,
             'province' => $request->province,
         ]);
+
+        $retailerRole = DomainRole::where('name', 'retailer')->first();
+        $domainPermissions = DomainPermission::all();
+        $userShoppingFeature = DomainFeature::where('name', 'user_shopping')->first();
+        $userDashboardFeature = DomainFeature::where('name', 'user_dashboard')->first();
+
+        $domainFeaturePermissions = DomainFeaturePermission::whereIn('domain_permission_id', $domainPermissions->pluck('id'))
+        ->where(function ($query) use ($userShoppingFeature, $userDashboardFeature) {
+            $query->where('domain_feature_id', $userShoppingFeature->id)
+                ->orWhere('domain_feature_id', $userDashboardFeature->id);
+        })
+        ->get();
+
+        foreach ($domainFeaturePermissions as $domainFeaturePermission) {
+            $domainFeaturePermission = DomainAccessConfiguration::create(
+                [
+                    'user_id' => $user->id,
+                    'domain_role_id' => $retailerRole->id,
+                    'domain_feature_permission_id' => $domainFeaturePermission->id
+                ]
+            );
+        }
+
         // $user->sendEmailVerificationNotification();
         $emailVerification = new EmailVerification(['token' => Str::random(64)]);
         $user->emailVerification()->save($emailVerification);
@@ -68,7 +95,7 @@ class RegisterController extends Controller
 
         // $token = $user->createToken('MyApp')->accessToken;
 
-        return response()->api("User berhasil didaftarkan.",200);
+        return response()->api("User registered successfully.",200);
     }
 
     // Handle the email verification.

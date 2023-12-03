@@ -96,10 +96,18 @@ class LoginController extends Controller
         Auth::login($existingUser);
 
         // Generate an access token for the user
-        $token = $existingUser->createToken(env("APP_NAME"))->plainTextToken;
+        $token = $existingUser->createToken(config('app.name'))->plainTextToken;
 
         return response()->api(['token' => $token], 200);
 
+    }
+
+    public function logout()
+    {
+        // Revoke the current user's token
+        Auth::user()->tokens()->where('id', Auth::id())->delete();
+
+        return response()->api('Logout successful.', 200);
     }
 
 }

@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class DomainAccessConfiguration extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'domain_role_id',
+        'domain_feature_permission_id'
+
+    ];
+
     public function domainFeaturePermission()
     {
         return $this->belongsTo(DomainFeaturePermission::class,'domain_feature_permission_id','id');
